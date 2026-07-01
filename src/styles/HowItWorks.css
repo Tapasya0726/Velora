@@ -1,0 +1,100 @@
+
+.howitworks{
+  padding:40px 20px 120px;
+  background-color:white;
+  text-align:center;
+  scroll-margin-top:100px;
+}
+
+.work-header{
+  max-width:700px;
+  margin:auto;
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.work-header h6{
+  font-size:14px;
+  font-weight:600;
+  color:#4f46e5;
+  letter-spacing:1px;
+}
+
+.work-header h2{
+  font-size:38px;
+  font-weight:1000;
+  color:#111827;
+  line-height:1.2;
+}
+
+.step-cards{
+  display:grid;
+  grid-template-columns:repeat(3, 1fr);
+  gap:30px;
+  margin-top:70px;
+}
+
+.step-card{
+  background-color:#f9fafb;
+  padding:35px 30px;
+  border-radius:20px;
+  text-align:left;
+  border:1px solid #e5e7eb;
+}
+
+.step-no{
+  width:60px;
+  height:60px;
+  background-color:#eef2ff;
+  color:#4f46e5;
+  border-radius:16px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:24px;
+  font-weight:700;
+  margin-bottom:20px;
+}
+
+.step-card h3{
+  font-size:24px;
+  font-weight:600;
+  color:#111827;
+  margin-bottom:14px;
+}
+
+.step-card p{
+  font-size:16px;
+  color:#6b7280;
+  line-height:1.7;
+}
+
+@media screen and (max-width:768px){
+
+
+  .howitworks{
+    padding:70px 20px;
+  }
+
+  .work-header h2{
+    font-size:32px;
+  }
+
+  .step-cards{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .step-card{
+    padding:24px;
+  }
+
+  .step-card h3{
+    font-size:20px;
+  }
+
+  .step-card p{
+    font-size:15px;
+  }
+}

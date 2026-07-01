@@ -1,0 +1,173 @@
+.resume-section{
+    background:white;
+    border:1px solid #e5e7eb;
+    border-radius:18px;
+    padding:24px;
+    margin-bottom:22px;
+    transition:0.2s;
+}
+
+.resume-section:hover{
+    border-color:#4f46e5;
+    box-shadow:0 6px 14px rgba(0,0,0,0.06);
+}
+
+.resume-section h6{
+    color:#4f46e5;
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:1px;
+    text-transform:uppercase;
+    margin-bottom:18px;
+}
+
+.resume-content{
+    display:flex;
+    flex-direction:column;
+    gap:16px;
+}
+
+.resume-content h4{
+    font-size:18px;
+    font-weight:700;
+    color:#111827;
+    margin-bottom:6px;
+}
+
+.resume-content p{
+    font-size:14px;
+    color:#6b7280;
+    line-height:1.6;
+}
+
+/* Project Cards */
+
+.resume-content > div{
+    background:#fafafa;
+    border:1px solid #e5e7eb;
+    border-radius:14px;
+    padding:16px;
+    transition:0.2s;
+}
+
+.resume-content > div:hover{
+    background:#f8f7ff;
+    border-color:#c7d2fe;
+}
+
+/* Skills */
+
+.resume-skills{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+}
+
+.resume-skills span{
+    background:#eef2ff;
+    color:#4f46e5;
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:13px;
+    font-weight:600;
+}
+
+@media (max-width: 1024px){
+
+    .resume-section{
+        padding:22px;
+    }
+
+    .resume-content h4{
+        font-size:17px;
+    }
+
+    .resume-content p{
+        font-size:13px;
+    }
+
+}
+
+@media (max-width: 768px){
+
+    .resume-section{
+        padding:20px;
+        border-radius:16px;
+    }
+
+    .resume-section h6{
+        font-size:10px;
+        margin-bottom:16px;
+    }
+
+    .resume-content{
+        gap:14px;
+    }
+
+    .resume-content h4{
+        font-size:16px;
+    }
+
+    .resume-content p{
+        font-size:13px;
+        line-height:1.5;
+    }
+
+    .resume-content > div{
+        padding:14px;
+        border-radius:12px;
+    }
+
+    .resume-skills{
+        gap:8px;
+    }
+
+    .resume-skills span{
+        font-size:12px;
+        padding:7px 12px;
+    }
+
+}
+
+@media (max-width: 480px){
+
+    .resume-section{
+        padding:16px;
+        border-radius:14px;
+        margin-bottom:18px;
+    }
+
+    .resume-section h6{
+        font-size:9px;
+        letter-spacing:0.8px;
+        margin-bottom:14px;
+    }
+
+    .resume-content{
+        gap:12px;
+    }
+
+    .resume-content h4{
+        font-size:15px;
+    }
+
+    .resume-content p{
+        font-size:12px;
+        line-height:1.5;
+    }
+
+    .resume-content > div{
+        padding:12px;
+        border-radius:10px;
+    }
+
+    .resume-skills{
+        gap:6px;
+    }
+
+    .resume-skills span{
+        font-size:11px;
+        padding:6px 10px;
+    }
+
+}

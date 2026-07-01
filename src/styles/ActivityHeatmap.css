@@ -1,0 +1,150 @@
+.heatmap-card{
+    background:#ffffff;
+    border:1px solid #e5e7eb;
+    border-radius:20px;
+    padding:24px;
+}
+
+.heatmap-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:24px;
+}
+
+.heatmap-header h3{
+    font-size:22px;
+    font-weight:700;
+    color:#111827;
+}
+
+.heatmap-header span{
+    font-size:14px;
+    color:#6b7280;
+}
+
+/* ================= Heatmap Grid ================= */
+
+.heatmap-grid{
+    display:grid;
+    grid-template-columns:repeat(13,18px);
+    gap:6px;
+    justify-content:center;
+    margin-bottom:24px;
+}
+
+/* ================= Cell ================= */
+
+.heatmap-cell{
+    width:18px;
+    height:18px;
+    border-radius:4px;
+    transition:0.2s ease;
+    cursor:pointer;
+}
+
+.heatmap-cell:hover{
+    transform:scale(1.15);
+}
+
+/* ================= Activity Levels ================= */
+
+.level-0{
+    background:#f3f4f6;
+}
+
+.level-1{
+    background:#ddd6fe;
+}
+
+.level-2{
+    background:#c4b5fd;
+}
+
+.level-3{
+    background:#8b5cf6;
+}
+
+.level-4{
+    background:#5b21b6;
+}
+
+/* ================= Legend ================= */
+
+.heatmap-footer{
+    display:flex;
+    justify-content:flex-end;
+    align-items:center;
+    gap:12px;
+}
+
+.heatmap-footer span{
+    font-size:13px;
+    color:#6b7280;
+}
+
+.heatmap-legend{
+    display:flex;
+    gap:6px;
+}
+
+@media (max-width:768px){
+
+    .heatmap-card{
+        padding:20px;
+    }
+
+    .heatmap-header{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:8px;
+    }
+
+    .heatmap-header h3{
+        font-size:20px;
+    }
+
+    .heatmap-grid{
+        grid-template-columns:repeat(13,16px);
+        gap:5px;
+    }
+
+    .heatmap-cell{
+        width:16px;
+        height:16px;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .heatmap-card{
+        padding:16px;
+        border-radius:16px;
+    }
+
+    .heatmap-header h3{
+        font-size:18px;
+    }
+
+    .heatmap-header span{
+        font-size:12px;
+    }
+
+    .heatmap-grid{
+        grid-template-columns:repeat(13,14px);
+        gap:4px;
+    }
+
+    .heatmap-cell{
+        width:14px;
+        height:14px;
+    }
+
+    .heatmap-footer{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:10px;
+    }
+
+}

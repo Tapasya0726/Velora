@@ -1,0 +1,142 @@
+.goal-completion-card{
+    background:#ffffff;
+    border:1px solid #e5e7eb;
+    border-radius:20px;
+    padding:24px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+    transition:0.25s ease;
+}
+
+.goal-completion-card:hover{
+    transform:translateY(-4px);
+    border-color:#c7d2fe;
+    box-shadow:0 10px 24px rgba(79,70,229,0.08);
+}
+
+/* ================= Heading ================= */
+
+.goal-completion-card h3{
+    font-size:22px;
+    font-weight:700;
+    color:#111827;
+    margin-bottom:24px;
+}
+
+/* ================= Circle ================= */
+
+.goal-circle{
+    width:160px;
+    height:160px;
+    border-radius:50%;
+    background:conic-gradient(
+        #4f46e5 0deg,
+        #4f46e5 260deg,
+        #e5e7eb 260deg,
+        #e5e7eb 360deg
+    );
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin-bottom:24px;
+}
+
+.goal-circle-inner{
+    width:120px;
+    height:120px;
+    background:#ffffff;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.goal-circle-inner h2{
+    font-size:32px;
+    font-weight:800;
+    color:#4f46e5;
+}
+
+/* ================= Info ================= */
+
+.goal-info h4{
+    font-size:24px;
+    font-weight:700;
+    color:#111827;
+    margin-bottom:8px;
+}
+
+.goal-info p{
+    color:#6b7280;
+    font-size:14px;
+    line-height:1.6;
+}
+
+@media (max-width:768px){
+
+    .goal-completion-card{
+        padding:20px;
+    }
+
+    .goal-completion-card h3{
+        font-size:20px;
+    }
+
+    .goal-circle{
+        width:140px;
+        height:140px;
+    }
+
+    .goal-circle-inner{
+        width:105px;
+        height:105px;
+    }
+
+    .goal-circle-inner h2{
+        font-size:28px;
+    }
+
+    .goal-info h4{
+        font-size:22px;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .goal-completion-card{
+        padding:16px;
+        border-radius:16px;
+    }
+
+    .goal-completion-card h3{
+        font-size:18px;
+        margin-bottom:20px;
+    }
+
+    .goal-circle{
+        width:120px;
+        height:120px;
+        margin-bottom:20px;
+    }
+
+    .goal-circle-inner{
+        width:90px;
+        height:90px;
+    }
+
+    .goal-circle-inner h2{
+        font-size:24px;
+    }
+
+    .goal-info h4{
+        font-size:20px;
+    }
+
+    .goal-info p{
+        font-size:13px;
+    }
+
+}

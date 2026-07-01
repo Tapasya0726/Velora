@@ -1,0 +1,154 @@
+.topskills{
+    background-color:white;
+    border-radius:15px;
+    padding:20px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.05);
+    margin-top:20px;
+    flex:1;
+}
+
+.skills-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.skills-header h3{
+    margin:0;
+    font-size:18px;
+    font-weight:600;
+    color:#111827;
+}
+
+.skills-header a{
+    text-decoration:none;
+    font-size:14px;
+    color:#4f46e5;
+    font-weight:500;
+}
+
+.skills-header a:hover{
+    text-decoration:underline;
+}
+
+.skills{
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.skill{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.skill-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+}
+
+.skill-item span:nth-child(2){
+    font-size:14px;
+    font-weight:500;
+}
+
+.skill-item span:last-child{
+    margin-left:auto;
+    font-size:13px;
+    font-weight:600;
+    color:#374151;
+}
+
+.skill-icon{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-size:18px;
+}
+
+.js-icon{
+    color:#4f46e5;
+}
+
+.react-icon{
+    color:#68a063;
+}
+
+.node-icon{
+    color:rgb(219, 175, 28);
+}
+
+.progress-bar{
+    width:100%;
+    height:8px;
+    background-color:#e5e7eb;
+    border-radius:999px;
+    overflow:hidden;
+}
+
+.progress{
+    height:100%;
+    border-radius:999px;
+}
+
+.js-progress{
+    width:85%;
+    background-color:#4f46e5;
+}
+
+.react-progress{
+    width:50%;
+    background-color:#68a063;
+}
+
+.node-progress{
+    width:25%;
+    background-color:rgb(219, 175, 28)
+}
+
+@media screen and (max-width:768px){
+
+    .topskills{
+        padding:15px;
+    }
+
+    .skills-header{
+        margin-bottom:15px;
+    }
+
+    .skills-header h3{
+        font-size:16px;
+    }
+
+    .skills-header a{
+        font-size:13px;
+    }
+
+    .skills{
+        gap:15px;
+    }
+
+    .skill-item{
+        gap:8px;
+    }
+
+    .skill-item span:nth-child(2){
+        font-size:13px;
+    }
+
+    .skill-item span:last-child{
+        font-size:12px;
+    }
+
+    .skill-icon{
+        font-size:16px;
+    }
+
+    .progress-bar{
+        height:6px;
+    }
+
+}

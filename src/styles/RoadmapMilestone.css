@@ -1,0 +1,148 @@
+.milestone-card{
+    background:#ffffff;
+    border:1px solid #e5e7eb;
+    border-radius:18px;
+    padding:18px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    transition:0.25s ease;
+    margin-bottom:18px;
+}
+
+.milestone-card:hover{
+    transform:translateY(-3px);
+    border-color:#c7d2fe;
+    box-shadow:0 8px 20px rgba(79,70,229,0.08);
+}
+
+/* Header */
+
+.milestone-header{
+    display:flex;
+    align-items:center;
+    gap:16px;
+}
+
+/* Icon */
+
+.milestone-icon{
+    width:48px;
+    height:48px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#f5f3ff;
+    font-size:22px;
+    flex-shrink:0;
+}
+
+.completed-icon{
+    color:#22c55e;
+}
+
+.progress-icon{
+    color:#f59e0b;
+}
+
+.pending-icon{
+    color:#9ca3af;
+}
+
+/* Text */
+
+.milestone-info h5{
+    font-size:17px;
+    color:#111827;
+    font-weight:700;
+    margin-bottom:6px;
+}
+
+.milestone-info p{
+    font-size:14px;
+    color:#6b7280;
+    line-height:1.5;
+}
+
+/* Status Badge */
+
+.status{
+    padding:8px 14px;
+    border-radius:999px;
+    font-size:12px;
+    font-weight:600;
+    white-space:nowrap;
+}
+
+/* Completed */
+
+.status.completed{
+    background:#dcfce7;
+    color:#15803d;
+}
+
+/* In Progress */
+
+.status.in-progress{
+    background:#fef3c7;
+    color:#b45309;
+}
+
+/* Pending */
+
+.status.pending{
+    background:#f3f4f6;
+    color:#6b7280;
+}
+
+@media (max-width:768px){
+
+    .milestone-card{
+        flex-direction:column;
+        align-items:flex-start;
+        gap:18px;
+    }
+
+    .milestone-header{
+        width:100%;
+    }
+
+    .status{
+        align-self:flex-start;
+    }
+
+    .milestone-info h5{
+        font-size:16px;
+    }
+
+    .milestone-info p{
+        font-size:13px;
+    }
+}
+
+@media (max-width:480px){
+
+    .milestone-card{
+        padding:16px;
+    }
+
+    .milestone-icon{
+        width:42px;
+        height:42px;
+        font-size:20px;
+    }
+
+    .milestone-info h5{
+        font-size:15px;
+    }
+
+    .milestone-info p{
+        font-size:12px;
+    }
+
+    .status{
+        width:100%;
+        text-align:center;
+    }
+}

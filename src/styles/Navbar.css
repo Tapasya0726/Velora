@@ -1,0 +1,123 @@
+nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:15px 60px;
+  background-color:white;
+  border-bottom:1px solid lightgray;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+}
+
+.leftsection{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  cursor:pointer;
+}
+
+.centersection{
+  display:flex;
+  gap:20px;
+}
+
+.rightsection{
+  display:flex;
+  align-items:center;
+  gap:15px;
+}
+
+.leftsection img{
+  width:40px;
+  height:auto;
+}
+
+.leftsection h2{
+  font-size:25px;
+  font-weight:bold;
+  color:black;
+  margin:0;
+}
+
+.centersection a{
+  text-decoration:none;
+  color:rgb(27, 25, 25);
+  font-size:15px;
+  font-weight:normal;
+  transition:0.2s;
+  padding:8px 16px;
+  border-radius:8px;
+}
+
+.centersection a:hover{
+  background-color:lightgray;
+  color:black;
+  cursor:pointer;
+}
+
+.rightsection a{
+    text-decoration:none;
+  color:rgb(27, 25, 25);
+  font-size:15px;
+  font-weight:normal;
+  transition:0.2s;
+  padding:8px 16px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.rightsection a:hover{
+  background-color:lightgray;
+  color:black;
+}
+
+.rightsection button{
+  background-color:darkblue;
+  color:white;
+  padding:10px 18px;
+  border:none;
+  border-radius:8px;
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+  transition:0.2s
+}
+
+.rightsection button:hover{
+  background-color:indigo;
+}
+
+@media screen and (max-width:768px){
+      nav{
+    padding:15px 20px;
+  }
+
+  .centersection{
+    display:none;
+  }
+
+  .rightsection{
+    gap:8px;
+  }
+
+  .rightsection a{
+    font-size:13px;
+    padding:6px 10px;
+  }
+
+  .rightsection button{
+    padding:10px 14px;
+    font-size:12px;
+  }
+
+  .leftsection h2{
+    font-size:20px;
+  }
+
+  .leftsection img{
+    width:32px;
+  }
+}
