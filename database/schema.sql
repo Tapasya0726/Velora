@@ -25,7 +25,7 @@ CREATE TABLE users (
 
 CREATE TABLE tasks (
     task_id SERIAL PRIMARY KEY,
-    user_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL REFERENCES users(user_id),
     title VARCHAR(255) NOT NULL,
     priority VARCHAR(100) NOT NULL
         CHECK (priority IN ('High','Medium','Low')),
@@ -40,7 +40,7 @@ CREATE TABLE tasks (
 
 CREATE TABLE notes (
     note_id SERIAL PRIMARY KEY,
-    user_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL REFERENCES users(user_id),
     title VARCHAR(100) NOT NULL,
     content TEXT NOT NULL,
     category VARCHAR(100) NOT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE notes (
 
 CREATE TABLE applications (
     application_id SERIAL PRIMARY KEY,
-    user_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL REFERENCES users(user_id),
     company_name VARCHAR(100) NOT NULL,
     role VARCHAR(100) NOT NULL,
     status VARCHAR(100) NOT NULL
@@ -68,7 +68,7 @@ CREATE TABLE applications (
 
 CREATE TABLE skills (
     skill_id SERIAL PRIMARY KEY,
-    user_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL REFERENCES users(user_id),
     skill_name VARCHAR(100) NOT NULL,
     category VARCHAR(100) NOT NULL,
     level VARCHAR(100) NOT NULL
@@ -82,7 +82,7 @@ CREATE TABLE skills (
 -- ===========================================
 
 CREATE TABLE resume (
-    resume_id SERIAL PRIMARY KEY,
+    resume_id SERIAL PRIMARY KEY REFERENCES users(user_id),
     user_id INTEGER NOT NULL UNIQUE,
     summary TEXT
 );
@@ -93,7 +93,7 @@ CREATE TABLE resume (
 
 CREATE TABLE projects (
     project_id SERIAL PRIMARY KEY,
-    resume_id INTEGER NOT NULL,
+    resume_id INTEGER NOT NULL REFERENCES resume(resume_id),
     project_name VARCHAR(100) NOT NULL,
     description TEXT NOT NULL,
     github_link TEXT,
@@ -107,7 +107,7 @@ CREATE TABLE projects (
 
 CREATE TABLE education (
     education_id SERIAL PRIMARY KEY,
-    resume_id INTEGER NOT NULL,
+    resume_id INTEGER NOT NULL REFERENCES resume(resume_id),
     institution VARCHAR(255) NOT NULL,
     degree VARCHAR(100) NOT NULL,
     cgpa NUMERIC(3,2) NOT NULL,
@@ -121,7 +121,7 @@ CREATE TABLE education (
 
 CREATE TABLE resources (
     resource_id SERIAL PRIMARY KEY,
-    user_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL REFERENCES users(user_id),
     title VARCHAR(255) NOT NULL,
     type VARCHAR(100) NOT NULL
         CHECK (type IN ('Video','Article','PDF','Website','Course')),
@@ -135,7 +135,7 @@ CREATE TABLE resources (
 
 CREATE TABLE roadmap_items (
     roadmap_item_id SERIAL PRIMARY KEY,
-    user_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL REFERENCES users(user_id),
     title VARCHAR(255) NOT NULL,
     duration VARCHAR(100) NOT NULL,
     status VARCHAR(100) NOT NULL
@@ -148,7 +148,7 @@ CREATE TABLE roadmap_items (
 
 CREATE TABLE pomodoro_sessions (
     pomodoro_session_id SERIAL PRIMARY KEY,
-    user_id INTEGER NOT NULL,
+    user_id INTEGER NOT NULL REFERENCES users(user_id),
     duration INTEGER NOT NULL,
     completed_date DATE NOT NULL
 );
