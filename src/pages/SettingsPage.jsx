@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import api from "../api/axios";
 import AppLayout from "../layouts/AppLayout";
 
 import SettingsProfileCard from "../components/SettingsProfileCard";
@@ -8,17 +10,39 @@ import SettingsDangerZone from "../components/SettingsDangerZone";
 import "../styles/SettingsPage.css";
 
 export default function SettingsPage() {
+    const [user, setUser] = useState(null);
 
-    const user = {
-        profileImage: "",
-        fullName: "John Doe",
-        email: "john@example.com",
-        university: "UPES",
-        major: "Computer Science",
-        year: "3rd Year",
-        graduationYear: "2027"
+const fetchProfile = async () => {
+
+        try {
+
+            const response = await api.get("/profile");
+
+            console.log(response.data);
+
+            setUser(response.data);
+
+        } catch (error) {
+
+            console.error(error);
+
+        }
+
     };
 
+    useEffect(() => {
+
+    
+
+    fetchProfile();
+
+}, []);
+
+if (!user) {
+
+    return <p>Loading...</p>;
+
+}
     return (
         <AppLayout>
 
@@ -37,20 +61,21 @@ export default function SettingsPage() {
                 {/* Profile Card */}
 
                 <SettingsProfileCard
-                    profileImage={user.profileImage}
-                    name={user.fullName}
+                    profileImage=""
+                    name={user.name}
                     email={user.email}
                 />
 
                 {/* Personal Information */}
 
                 <SettingsPersonalInfo
-                    fullName={user.fullName}
+                    fullName={user.name}
                     email={user.email}
                     university={user.university}
                     major={user.major}
                     year={user.year}
-                    graduationYear={user.graduationYear}
+                    graduationYear={user.graduation_year}
+                    onProfileUpdated={fetchProfile}
                 />
 
                 {/* Change Password */}

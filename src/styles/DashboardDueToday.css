@@ -21,7 +21,7 @@
     color:#111827;
 }
 
-.due-header a{
+.due-header all-tasks-link{
     text-decoration:none;
     font-size:14px;
     color:#4f46e5;
@@ -29,7 +29,7 @@
     cursor:pointer;
 }
 
-.due-header a:hover{
+.due-header all-tasks-link:hover{
     text-decoration-line: underline;
 }
 
@@ -48,6 +48,44 @@
 
 .task-item:hover{
     background-color:#f2f5f8;
+}
+
+.no-task-message{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    height:120px;
+
+    font-size:16px;
+
+    font-weight:500;
+
+    color:#64748B;
+
+    background:#F8FAFC;
+
+    border:2px dashed #D6D9E4;
+
+    border-radius:16px;
+
+    margin-top:16px;
+
+    transition:.3s ease;
+
+}
+
+.no-task-message:hover{
+
+    border-color:#6C63FF;
+
+    color:#6C63FF;
+
+    background:#F5F3FF;
+
 }
 
 .task-top{

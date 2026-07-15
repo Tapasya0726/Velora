@@ -1,91 +1,247 @@
+import { formatDate } from "../utils/formatDate";
+import { useEffect, useState } from "react";
+import api from "../api/axios";
 import TaskCard from "../components/TaskCard";
+import NewTaskModal from "../components/NewTaskModal";
 import "../styles/TasksPage.css";
 import AppLayout from "../layouts/AppLayout";
 
-export default function TasksPage(){
-    const tasks = [
-        {
-            id:1,
-            title:"Design Notes Module UI",
-            priority:"High",
-            duedate:"Jun 9",
-            completed: false
-        },
+export default function TasksPage() {
 
-        {
-            id:2,
-            title:"Make Dashboard UI",
-            priority:"Low",
-            duedate:"Jun 20",
-            completed: true
-        },
+    const [tasks, setTasks] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [selectedTask, setSelectedTask] = useState(null);
 
-        {
-  id:3,
-  title:"Learn PostgreSQL",
-  priority:"Medium",
-  duedate:"Jul 5",
-  completed:false
-},
+const fetchTasks = async () => {
 
-{
-  id:4,
-  title:"Build Notes Module",
-  priority:"High",
-  duedate:"Jul 10",
-  completed:true
-}
-    ]
-    return(
+            try {
+
+                const response = await api.get("/tasks");
+
+                setTasks(response.data);
+
+            } catch (error) {
+
+                console.error(error);
+
+            }
+
+        };
+
+  const handleEditTask = (task) => {
+
+    setSelectedTask(task);
+
+    setShowModal(true);
+
+};
+
+const handleToggleStatus = async (task) => {
+
+    try {
+
+        await api.put(
+            `/tasks/${task.task_id}`,
+            {
+                title: task.title,
+                priority: task.priority,
+                due_date: task.due_date,
+                status:
+                    task.status === "Pending"
+                        ? "Completed"
+                        : "Pending"
+            }
+        );
+
+        fetchTasks();
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            error.response?.data?.message ||
+            "Failed to update task."
+        );
+
+    }
+
+};
+
+        const handleDeleteTask = async (taskId) => {
+
+    const confirmDelete = window.confirm(
+        "Are you sure you want to delete this task?"
+    );
+
+    if (!confirmDelete) {
+        return;
+    }
+
+    try {
+
+        await api.delete(`/tasks/${taskId}`);
+
+        fetchTasks();
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            error.response?.data?.message ||
+            "Failed to delete task."
+        );
+
+    }
+
+};
+
+    useEffect(() => {
+
+        fetchTasks();
+
+    }, []);
+
+    return (
+
         <AppLayout>
+
             <div className="header-row">
-            <div className="task-header">
-                <h6>WORKSPACE</h6>
-                <h2>Tasks</h2>
-                <p>5 pending · 18 completed</p>
+
+                <div className="task-header">
+
+                    <h6>WORKSPACE</h6>
+
+                    <h2>Tasks</h2>
+
+                    <p>
+                        {tasks.filter(task => task.status === "Pending").length}
+                        {" "}pending ·{" "}
+                        {tasks.filter(task => task.status === "Completed").length}
+                        {" "}completed
+                    </p>
+
+                </div>
+
+                <button
+                    className="newtask"
+                    onClick={() => setShowModal(true)}
+                >
+                    + New Task
+                </button>
+
             </div>
 
-            <button className="newtask">
-                + New Task
-            </button>
-            </div>
             <div className="completion-rate">
-                <h5>78%</h5>
+
+                <h5>
+
+                    {
+                        tasks.length === 0
+                            ? 0
+                            : Math.round(
+                                (
+                                    tasks.filter(task => task.status === "Completed").length
+                                    /
+                                    tasks.length
+                                ) * 100
+                            )
+                    }
+
+                    %
+
+                </h5>
+
                 <p>Completion rate</p>
+
             </div>
 
             <section className="pending">
-                <h6>Pending(5)</h6>
-                {tasks
-                .filter(task => !task.completed)
-                .map(task =>(
-                <TaskCard
-                key={task.id}
-                title={task.title}
-                priority={task.priority}
-                duedate={task.duedate}
-                completed={task.completed}
-                />
-                ))}
+
+                <h6>
+
+                    Pending (
+                    {tasks.filter(task => task.status === "Pending").length}
+                    )
+
+                </h6>
+
+                {
+
+                    tasks
+                        .filter(task => task.status === "Pending")
+                        .map(task => (
+
+                            <TaskCard
+    key={task.task_id}
+    taskId={task.task_id}
+    title={task.title}
+    priority={task.priority}
+    duedate={formatDate(task.due_date)}
+    completed={false}
+    onEdit={() => handleEditTask(task)}
+    onDelete={handleDeleteTask}
+    onToggle={() => handleToggleStatus(task)}
+
+/>
+
+                        ))
+
+                }
 
             </section>
 
             <section className="completed">
-                <h6>Completed(2)</h6>
-                {tasks
-                .filter(task => task.completed)
-                .map(task => (
-                    <TaskCard
-                    key={task.id}
-                    title={task.title}
-                    priority={task.priority}
-                    duedate={task.duedate}
-                    completed={task.completed}
-                    />
-                ))}
+
+                <h6>
+
+                    Completed (
+                    {tasks.filter(task => task.status === "Completed").length}
+                    )
+
+                </h6>
+
+                {
+
+                    tasks
+                        .filter(task => task.status === "Completed")
+                        .map(task => (
+
+                            <TaskCard
+    key={task.task_id}
+    taskId={task.task_id}
+    title={task.title}
+    priority={task.priority}
+    duedate={formatDate(task.due_date)}
+    completed={true}
+    onEdit={() => handleEditTask(task)}
+    onDelete={handleDeleteTask}
+    onToggle={() => handleToggleStatus(task)}
+
+/>
+
+                        ))
+
+                }
+
             </section>
-            
+
+            {
+                showModal && (
+                    <NewTaskModal
+    onClose={() => {
+        setShowModal(false);
+        setSelectedTask(null);
+    }}
+    onTaskCreated={fetchTasks}
+    selectedTask={selectedTask}
+/>
+                )
+            }
 
         </AppLayout>
+
     );
+
 }

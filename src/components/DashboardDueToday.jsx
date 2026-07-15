@@ -1,50 +1,116 @@
+import { formatDate } from "../utils/formatDate";
+import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
+import api from "../api/axios";
 import "../styles/DashboardDueToday.css";
-import TaskItem from "./TaskItem"
+import TaskItem from "./TaskItem";
 
-export default function DashboardDueToday(){
+export default function DashboardDueToday({refreshTasks}) {
 
-const tasks = [
-  {
-    title: "Setup express route for auth",
-    priority: "Urgent",
-    date: "June 9",
-    completed: true
-  },
+    const [tasks, setTasks] = useState([]);
 
-  {
-    title: "Design notes module UI",
-    priority: "High",
-    date: "June 9",
-    completed: false
-  },
+     const fetchTasks = async () => {
 
-  {
-    title: "Make APIs",
-    priority: "Medium",
-    date: "June 10",
-    completed: false
-  }
-];
+            try {
 
-    return(
-         <section className="duetoday">
+                const response = await api.get("/tasks");
+
+                console.log(response.data);
+
+                setTasks(response.data);
+
+            } catch (error) {
+
+                console.error(error);
+
+            }
+
+        };
+
+        const handleToggleStatus = async (task) => {
+
+    try {
+
+        await api.put(
+            `/tasks/${task.task_id}`,
+            {
+                title: task.title,
+                priority: task.priority,
+                due_date: task.due_date,
+                status:
+                    task.status === "Pending"
+                        ? "Completed"
+                        : "Pending"
+            }
+        );
+
+        fetchTasks();
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+};
+
+    useEffect(() => {
+
+        fetchTasks();
+
+    }, [refreshTasks]);
+
+const todayTasks = tasks
+    .filter((task) => {
+
+        const today = new Date();
+
+        const dueDate = new Date(task.due_date);
+
+        return (
+            dueDate.getDate() === today.getDate() &&
+            dueDate.getMonth() === today.getMonth() &&
+            dueDate.getFullYear() === today.getFullYear()
+        );
+
+    })
+    .slice(0, 3);
+
+    return (
+
+        <section className="duetoday">
+
             <div className="due-header">
+
                 <h3>Due today</h3>
-                <a href="#alltasks">All tasks →</a>
+
+                <Link to="/tasks" className="all-tasks-link">
+                     All tasks →
+                </Link>
+
             </div>
-            
-           {
-  tasks.map((task, index) => (
-    <TaskItem
-    key={index}
-    title={task.title}
-      priority={task.priority}
-      date={task.date}
-      completed={task.completed}
-    />
-  ))
+
+            {
+                 todayTasks.length === 0 ? (
+        <p className="no-task-message">
+            🎉 No tasks due today!
+        </p>
+    ) : (
+    todayTasks.map((task) => (
+
+        <TaskItem
+            key={task.task_id}
+            title={task.title}
+            priority={task.priority}
+            date={formatDate(task.due_date)}
+            completed={task.status === "Completed"}
+            onToggle={() => handleToggleStatus(task)}
+        />
+
+    )))
 }
-         </section>
+
+        </section>
 
     );
 

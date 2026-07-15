@@ -1,10 +1,14 @@
 import "../styles/TaskCard.css"
 
 export default function TaskCard({
+    taskId,
     title, 
     priority,
     duedate,
-    completed 
+    completed,
+    onEdit,
+    onDelete,
+    onToggle
 }) {
     return(
         
@@ -13,7 +17,7 @@ export default function TaskCard({
         <div className="checkbox">
             <input type="checkbox"
             checked={completed}
-            readOnly
+            onChange={() => onToggle(taskId)}
             />
         </div>
         <div className="task-content">
@@ -25,6 +29,25 @@ export default function TaskCard({
 
 
         <div className="meta">
+
+             <div className="task-actions">
+
+    <button
+        className="edit-btn"
+        onClick={() => onEdit(taskId)}
+    >
+        ✏️
+    </button>
+
+    <button
+        className="delete-btn"
+        onClick={() => onDelete(taskId)}
+    >
+        🗑️
+    </button>
+
+</div>
+
         <div className="priority">
          <span className={`priority-${priority.toLowerCase()}`}>
             {priority}

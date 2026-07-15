@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import api from "../api/axios";
 import "../styles/DashboardStats.css";
 import { FaTasks } from "react-icons/fa";
 import { MdWorkOutline } from "react-icons/md";
@@ -5,13 +7,40 @@ import { FaBrain } from "react-icons/fa";
 import { GiProgression } from "react-icons/gi";
 
 export default function DashboardStats(){
+    const [tasks, setTasks] = useState([]);
+
+    useEffect(() => {
+
+    const fetchTasks = async () => {
+
+        try {
+
+            const response = await api.get("/tasks");
+
+            setTasks(response.data);
+
+        } catch (error) {
+
+            console.error(error);
+
+        }
+
+    };
+
+    fetchTasks();
+
+}, []);
+
+const completedTasks = tasks.filter(
+    task => task.status === "Completed"
+).length;
     return(
         <section className="stats">
             <div className="stat-card">
                 <FaTasks/>
-                <h2>18</h2>
+                <h2>{completedTasks}</h2>
                 <p className="stat-title">Tasks done</p>
-                <p className="stat-subtitle">+4 this week</p>
+                <p className="stat-subtitle">Total Completed</p>
             </div>
 
             <div className="stat-card">

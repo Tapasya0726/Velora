@@ -1,3 +1,5 @@
+import ProtectedRoute from "./components/ProtectedRoute";
+
 import "./App.css";
 
 import { Routes, Route, Navigate } from "react-router-dom";
@@ -22,19 +24,101 @@ function App() {
   return (
     <Routes>
 
-      <Route path="/" element={<LandingPage/>} />
-      <Route path="/login" element={<LoginPage/>} />
-      <Route path="/signup" element={<SignUpPage/>} />
-      <Route path="/dashboard" element={<DashboardPage/>} />
-      <Route path="/tasks" element={<TasksPage/>} />
-      <Route path="/notes" element={<NotesPage/>} />
-      <Route path="focus" element={<FocusPage/>} />
-      <Route path="/resume" element={<ResumePage />} />
-      <Route path="/skills" element={<SkillsPage />} />
-      <Route path="/applications" element={<ApplicationsPage />} />
-      <Route path="/roadmap" element={<RoadmapPage />} />
-      <Route path="/analytics" element={<AnalyticsPage />} />
-      <Route path="/settings" element={<SettingsPage />} />
+      <Route path="/" element={<LandingPage />} />
+
+<Route path="/login" element={<LoginPage />} />
+
+<Route path="/signup" element={<SignUpPage />} />
+
+     <Route
+    path="/dashboard"
+    element={
+        <ProtectedRoute>
+            <DashboardPage />
+        </ProtectedRoute>
+    }
+/>
+
+<Route
+    path="/tasks"
+    element={
+        <ProtectedRoute>
+            <TasksPage />
+        </ProtectedRoute>
+    }
+/>
+
+<Route
+    path="/notes"
+    element={
+        <ProtectedRoute>
+            <NotesPage />
+        </ProtectedRoute>
+    }
+/>
+
+<Route
+    path="/focus"
+    element={
+        <ProtectedRoute>
+            <FocusPage />
+        </ProtectedRoute>
+    }
+/>
+
+<Route
+    path="/resume"
+    element={
+        <ProtectedRoute>
+            <ResumePage />
+        </ProtectedRoute>
+    }
+/>
+
+<Route
+    path="/skills"
+    element={
+        <ProtectedRoute>
+            <SkillsPage />
+        </ProtectedRoute>
+    }
+/>
+
+<Route
+    path="/applications"
+    element={
+        <ProtectedRoute>
+            <ApplicationsPage />
+        </ProtectedRoute>
+    }
+/>
+
+<Route
+    path="/roadmap"
+    element={
+        <ProtectedRoute>
+            <RoadmapPage />
+        </ProtectedRoute>
+    }
+/>
+
+<Route
+    path="/analytics"
+    element={
+        <ProtectedRoute>
+            <AnalyticsPage />
+        </ProtectedRoute>
+    }
+/>
+
+<Route
+    path="/settings"
+    element={
+        <ProtectedRoute>
+            <SettingsPage />
+        </ProtectedRoute>
+    }
+/>
 
       </Routes>
   )

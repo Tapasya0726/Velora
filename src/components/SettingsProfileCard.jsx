@@ -1,5 +1,4 @@
 import "../styles/SettingsProfileCard.css";
-import { FaCamera } from "react-icons/fa";
 
 export default function SettingsProfileCard({
   profileImage,
@@ -36,12 +35,6 @@ export default function SettingsProfileCard({
         </div>
 
       </div>
-
-      <button className="change-photo-btn">
-        <FaCamera />
-        Change Photo
-      </button>
-
     </div>
   );
 }

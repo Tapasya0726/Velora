@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+import api from "../api/axios";
 import "../styles/SettingsPersonalInfo.css";
 
 export default function SettingsPersonalInfo({
@@ -7,7 +9,81 @@ export default function SettingsPersonalInfo({
   major,
   year,
   graduationYear,
+  onProfileUpdated
 }) {
+  const [name, setName] = useState("");
+const [uni, setUni] = useState("");
+const [userMajor, setUserMajor] = useState("");
+const [userYear, setUserYear] = useState("");
+const [gradYear, setGradYear] = useState("");
+const [loading, setLoading] = useState(false);
+
+useEffect(() => {
+
+    setName(fullName);
+    setUni(university);
+    setUserMajor(major);
+    setUserYear(year);
+    setGradYear(graduationYear);
+
+}, [
+    fullName,
+    university,
+    major,
+    year,
+    graduationYear
+]);
+
+const handleSave = async () => {
+
+    try {
+
+        setLoading(true);
+
+        await api.put("/profile", {
+
+            name,
+
+            university: uni,
+
+            major: userMajor,
+
+            year: userYear,
+
+            graduation_year: gradYear
+
+        });
+
+        const storedUser = JSON.parse(localStorage.getItem("user"));
+
+localStorage.setItem(
+    "user",
+    JSON.stringify({
+        ...storedUser,
+        name
+    })
+);
+
+       window.dispatchEvent(new Event("userUpdated"));
+
+        onProfileUpdated();
+
+    } catch (error) {
+
+        console.error(error);
+
+        alert(
+            error.response?.data?.message ||
+            "Failed to update profile."
+        );
+
+    } finally {
+
+        setLoading(false);
+
+    }
+
+};
   return (
     <div className="personal-info-card">
 
@@ -19,7 +95,8 @@ export default function SettingsPersonalInfo({
           <label>Full Name</label>
           <input
             type="text"
-            defaultValue={fullName}
+            value={name}
+    onChange={(e) => setName(e.target.value)}
           />
         </div>
 
@@ -27,7 +104,8 @@ export default function SettingsPersonalInfo({
           <label>Email</label>
           <input
             type="email"
-            defaultValue={email}
+            value={email}
+            readOnly
           />
         </div>
 
@@ -37,7 +115,8 @@ export default function SettingsPersonalInfo({
             <label>University</label>
             <input
               type="text"
-              defaultValue={university}
+              value={uni}
+    onChange={(e) => setUni(e.target.value)}
             />
           </div>
 
@@ -45,7 +124,8 @@ export default function SettingsPersonalInfo({
             <label>Major</label>
             <input
               type="text"
-              defaultValue={major}
+              value={userMajor}
+    onChange={(e) => setUserMajor(e.target.value)}
             />
           </div>
 
@@ -56,27 +136,37 @@ export default function SettingsPersonalInfo({
           <div className="form-group">
             <label>Year</label>
             <input
-              type="text"
-              defaultValue={year}
+              type="number"
+              value={userYear}
+    onChange={(e) => setUserYear(e.target.value)}
             />
           </div>
 
           <div className="form-group">
             <label>Graduation Year</label>
             <input
-              type="text"
-              defaultValue={graduationYear}
+                type="number"
+    min="2000"
+    max="2100"
+    value={gradYear}
+    onChange={(e) => setGradYear(e.target.value)}
             />
           </div>
 
         </div>
 
-        <button
-          type="button"
-          className="save-btn"
-        >
-          Save Changes
-        </button>
+     <button
+    type="button"
+    className="save-btn"
+    onClick={handleSave}
+    disabled={loading}
+>
+    {
+        loading
+            ? "Saving..."
+            : "Save Changes"
+    }
+</button>
 
       </form>
 
