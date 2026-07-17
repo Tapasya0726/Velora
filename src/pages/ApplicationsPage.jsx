@@ -1,54 +1,64 @@
 import ApplicationCard from "../components/ApplicationCard";
 import AppLayout from "../layouts/AppLayout";
 import "../styles/ApplicationsPage.css";
+import { useEffect, useState } from "react";
+import api from "../api/axios";
 
 export default function ApplicationsPage() {
+    const [applications, setApplications] = useState([]);
 
-    const applications = [
-        {
-            id: 1,
-            company: "Google",
-            role: "Software Engineer Intern",
-            status: "Applied",
-            appliedDate: "Jun 26"
-        },
-        {
-            id: 2,
-            company: "Microsoft",
-            role: "Frontend Intern",
-            status: "Interview",
-            appliedDate: "Jun 24"
-        },
-        {
-            id: 3,
-            company: "Cisco",
-            role: "Backend Intern",
-            status: "Offer",
-            appliedDate: "Jun 20"
-        },
-        {
-            id: 4,
-            company: "Adobe",
-            role: "UI/UX Intern",
-            status: "Rejected",
-            appliedDate: "Jun 18"
-        },
-        {
-            id: 5,
-            company: "Nvidia",
-            role: "AI/ML Intern",
-            status: "Applied",
-            appliedDate: "Jun 12"
-        },
-        {
-            id: 6,
-            company: "Cisco",
-            role: "Cloud Computing Intern",
-            status: "Interview",
-            appliedDate: "Jun 11"
-        }
-    ];
+const [stats, setStats] = useState({
+    total: 0,
+    applied: 0,
+    interview: 0,
+    offer: 0,
+    rejected: 0,
+    responseRate: 0
+});
 
+const fetchApplications = async () => {
+
+    try {
+
+        const response = await api.get("/applications");
+
+        console.log(response.data);
+
+        setApplications(response.data);
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+};
+
+const fetchApplicationStats = async () => {
+
+    try {
+
+        const response = await api.get("/applications/stats");
+
+        setStats(response.data);
+
+    } catch (error) {
+
+        console.error("Error fetching application stats:", error);
+
+    }
+
+};
+
+useEffect(() => {
+
+    fetchApplications();
+
+    fetchApplicationStats();
+
+}, []);
+
+    
     return (
         <AppLayout>
             <div className="app-page">
@@ -58,7 +68,7 @@ export default function ApplicationsPage() {
                     <div className="app-header">
                         <h6>CAREER</h6>
                         <h2>Applications</h2>
-                        <p>{applications.length} total · 43% response rate</p>
+                        <p>{stats.total} total · {stats.responseRate}% response rate</p>
                     </div>
 
                     <button className="add">+ Add</button>
@@ -68,22 +78,22 @@ export default function ApplicationsPage() {
                 <div className="summary">
 
                     <div className="summ-card applied">
-                        <h4>{applications.filter(app => app.status === "Applied").length}</h4>
+                        <h4>{stats.applied}</h4>
                         <p>Applied</p>
                     </div>
 
                     <div className="summ-card interview">
-                        <h4>{applications.filter(app => app.status === "Interview").length}</h4>
+                        <h4>{stats.interview}</h4>
                         <p>Interview</p>
                     </div>
 
                     <div className="summ-card offer">
-                        <h4>{applications.filter(app => app.status === "Offer").length}</h4>
+                        <h4>{stats.offer}</h4>
                         <p>Offer</p>
                     </div>
 
                     <div className="summ-card rejected">
-                        <h4>{applications.filter(app => app.status === "Rejected").length}</h4>
+                        <h4>{stats.rejected}</h4>
                         <p>Rejected</p>
                     </div>
 
@@ -110,11 +120,11 @@ export default function ApplicationsPage() {
                                 .filter(app => app.status === "Applied")
                                 .map(app => (
                                     <ApplicationCard
-                                        key={app.id}
-                                        company={app.company}
-                                        role={app.role}
-                                        appliedDate={app.appliedDate}
-                                    />
+    key={app.application_id}
+    company={app.company_name}
+    role={app.role}
+    appliedDate={app.applied_date}
+/>
                                 ))
                             }
 
@@ -132,11 +142,11 @@ export default function ApplicationsPage() {
                                 .filter(app => app.status === "Interview")
                                 .map(app => (
                                     <ApplicationCard
-                                        key={app.id}
-                                        company={app.company}
-                                        role={app.role}
-                                        appliedDate={app.appliedDate}
-                                    />
+    key={app.application_id}
+    company={app.company_name}
+    role={app.role}
+    appliedDate={app.applied_date}
+/>
                                 ))
                             }
 
@@ -154,11 +164,11 @@ export default function ApplicationsPage() {
                                 .filter(app => app.status === "Offer")
                                 .map(app => (
                                     <ApplicationCard
-                                        key={app.id}
-                                        company={app.company}
-                                        role={app.role}
-                                        appliedDate={app.appliedDate}
-                                    />
+    key={app.application_id}
+    company={app.company_name}
+    role={app.role}
+    appliedDate={app.applied_date}
+/>
                                 ))
                             }
 
@@ -176,11 +186,11 @@ export default function ApplicationsPage() {
                                 .filter(app => app.status === "Rejected")
                                 .map(app => (
                                     <ApplicationCard
-                                        key={app.id}
-                                        company={app.company}
-                                        role={app.role}
-                                        appliedDate={app.appliedDate}
-                                    />
+    key={app.application_id}
+    company={app.company_name}
+    role={app.role}
+    appliedDate={app.applied_date}
+/>
                                 ))
                             }
 

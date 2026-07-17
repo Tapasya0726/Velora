@@ -1,8 +1,7 @@
-import "../styles/ApplicationCard.css"
+import "../styles/ApplicationCard.css";
 
-export default function ApplicationCard({company,role,appliedDate})
-{
-    return(
+export default function ApplicationCard({ company, role, appliedDate }) {
+    return (
         <div className="application-card">
             <div className="application-header">
                 <h6>{company}</h6>
@@ -13,8 +12,5 @@ export default function ApplicationCard({company,role,appliedDate})
                 <span>📅 Applied {appliedDate}</span>
             </div>
         </div>
-
-
     );
-
 }
