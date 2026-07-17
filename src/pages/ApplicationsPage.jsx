@@ -1,4 +1,5 @@
 import ApplicationCard from "../components/ApplicationCard";
+import AddApplicationModal from "../components/AddApplicationModal";
 import AppLayout from "../layouts/AppLayout";
 import "../styles/ApplicationsPage.css";
 import { useEffect, useState } from "react";
@@ -6,6 +7,10 @@ import api from "../api/axios";
 
 export default function ApplicationsPage() {
     const [applications, setApplications] = useState([]);
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const [selectedApplication, setSelectedApplication] = useState(null);
 
 const [stats, setStats] = useState({
     total: 0,
@@ -50,11 +55,38 @@ const fetchApplicationStats = async () => {
 
 };
 
-useEffect(() => {
+const refreshApplications = () => {
 
     fetchApplications();
 
     fetchApplicationStats();
+
+};
+
+const deleteApplication = async (id) => {
+
+    const confirmed = window.confirm(
+        "Are you sure you want to delete this application?"
+    );
+
+    if (!confirmed) return;
+
+    try {
+
+        await api.delete(`/applications/${id}`);
+
+        refreshApplications();
+    } catch (error) {
+
+        console.error("Error deleting application:", error);
+
+    }
+
+};
+
+useEffect(() => {
+
+   refreshApplications();
 
 }, []);
 
@@ -71,7 +103,18 @@ useEffect(() => {
                         <p>{stats.total} total · {stats.responseRate}% response rate</p>
                     </div>
 
-                    <button className="add">+ Add</button>
+                    <button
+    className="add"
+    onClick={() => {
+
+        setSelectedApplication(null);
+
+        setIsModalOpen(true);
+
+    }}
+>
+    + Add
+</button>
                 </div>
 
                 {/* Summary Cards */}
@@ -124,6 +167,13 @@ useEffect(() => {
     company={app.company_name}
     role={app.role}
     appliedDate={app.applied_date}
+    onClick={() => {
+        setSelectedApplication(app);
+        setIsModalOpen(true);
+    }}
+    onDelete={() =>
+        deleteApplication(app.application_id)
+    }
 />
                                 ))
                             }
@@ -141,11 +191,18 @@ useEffect(() => {
                             {applications
                                 .filter(app => app.status === "Interview")
                                 .map(app => (
-                                    <ApplicationCard
+                                 <ApplicationCard
     key={app.application_id}
     company={app.company_name}
     role={app.role}
     appliedDate={app.applied_date}
+    onClick={() => {
+        setSelectedApplication(app);
+        setIsModalOpen(true);
+    }}
+    onDelete={() =>
+        deleteApplication(app.application_id)
+    }
 />
                                 ))
                             }
@@ -163,11 +220,18 @@ useEffect(() => {
                             {applications
                                 .filter(app => app.status === "Offer")
                                 .map(app => (
-                                    <ApplicationCard
+                                <ApplicationCard
     key={app.application_id}
     company={app.company_name}
     role={app.role}
     appliedDate={app.applied_date}
+    onClick={() => {
+        setSelectedApplication(app);
+        setIsModalOpen(true);
+    }}
+    onDelete={() =>
+        deleteApplication(app.application_id)
+    }
 />
                                 ))
                             }
@@ -185,11 +249,18 @@ useEffect(() => {
                             {applications
                                 .filter(app => app.status === "Rejected")
                                 .map(app => (
-                                    <ApplicationCard
+                                  <ApplicationCard
     key={app.application_id}
     company={app.company_name}
     role={app.role}
     appliedDate={app.applied_date}
+    onClick={() => {
+        setSelectedApplication(app);
+        setIsModalOpen(true);
+    }}
+    onDelete={() =>
+        deleteApplication(app.application_id)
+    }
 />
                                 ))
                             }
@@ -201,6 +272,19 @@ useEffect(() => {
                 </div>
 
             </div>
+
+<AddApplicationModal
+    isOpen={isModalOpen}
+    selectedApplication={selectedApplication}
+    onClose={() => {
+        setIsModalOpen(false);
+        setSelectedApplication(null);
+    }}
+    onApplicationAdded={() => {
+        refreshApplications();
+    }}
+/>
+
         </AppLayout>
     );
 }

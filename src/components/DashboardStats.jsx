@@ -52,10 +52,16 @@ const minutes =
 
             <div className="stat-card">
                 <MdWorkOutline/>
-                <h2>7</h2>
-                <p className="stat-title">Applications</p>
-                <p className="stat-subtitle">2 interviews</p>
-            </div>
+                <h2>{dashboardStats.totalApplications}</h2>
+
+<p className="stat-title">
+    Applications
+</p>
+
+<p className="stat-subtitle">
+    {dashboardStats.interviews} interview
+    {dashboardStats.interviews !== 1 ? "s" : ""}
+</p>      </div>
 
             <div className="stat-card">
     <FaBrain/>

@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import NewTaskModal from "../components/NewTaskModal";
 import "../styles/DashboardPage.css"
-import api from "../api/axios";
+import {
+    getDashboardStats,
+    getApplicationStats
+} from "../services/dashboardService";
 import DashboardHero from "../components/DashboardHero"
 import DashboardStats from "../components/DashboardStats"
 import DashboardDueToday from "../components/DashboardDueToday"
@@ -14,20 +17,45 @@ export default function DashboardPage(){
     const [showModal, setShowModal] = useState(false);
     const [refreshTasks, setRefreshTasks] = useState(false);
     const [dashboardStats, setDashboardStats] = useState({
-    totalFocusMinutes: 0
+    totalFocusMinutes: 0,
+    totalApplications: 0,
+    interviews: 0
 });
+
+const [applicationStats, setApplicationStats] = useState({
+    applied: 0,
+    interview: 0,
+    offer: 0,
+    rejected: 0
+});
+
+const fetchApplicationStats = async () => {
+
+    try {
+
+        const data = await getApplicationStats();
+
+        setApplicationStats(data);
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+};
 
 const fetchDashboardStats = async () => {
 
     try {
 
-        const response = await api.get("/dashboard/stats");
+        const data = await getDashboardStats();
 
-        setDashboardStats(response.data);
+        setDashboardStats(data);
 
     } catch (error) {
 
-        console.error("Error fetching dashboard stats:", error);
+        console.error(error);
 
     }
 
@@ -36,6 +64,7 @@ const fetchDashboardStats = async () => {
 useEffect(() => {
 
     fetchDashboardStats();
+    fetchApplicationStats();
 
 }, []);
 
@@ -54,7 +83,7 @@ useEffect(() => {
         </div>
 
         <div className="dashboard-row">
-            <DashboardApplications/>
+            <DashboardApplications applicationStats={applicationStats}/>
             <DashboardTopSkills/>
   
         </div>

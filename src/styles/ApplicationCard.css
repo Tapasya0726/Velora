@@ -46,6 +46,25 @@
     font-weight:500;
 }
 
+.application-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:6px;
+}
+
+.delete-btn{
+    background:none;
+    border:none;
+    cursor:pointer;
+    font-size:16px;
+    transition:0.2s;
+}
+
+.delete-btn:hover{
+    transform:scale(1.15);
+}
+
 @media screen and (max-width:768px){
 
     .application-card{
