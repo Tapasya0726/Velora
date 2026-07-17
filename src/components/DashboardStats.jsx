@@ -6,7 +6,7 @@ import { MdWorkOutline } from "react-icons/md";
 import { FaBrain } from "react-icons/fa";
 import { GiProgression } from "react-icons/gi";
 
-export default function DashboardStats(){
+export default function DashboardStats({ dashboardStats }){
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
@@ -34,6 +34,13 @@ export default function DashboardStats(){
 const completedTasks = tasks.filter(
     task => task.status === "Completed"
 ).length;
+
+const hours = Math.floor(
+    dashboardStats.totalFocusMinutes / 60
+);
+
+const minutes =
+    dashboardStats.totalFocusMinutes % 60;
     return(
         <section className="stats">
             <div className="stat-card">
@@ -51,11 +58,11 @@ const completedTasks = tasks.filter(
             </div>
 
             <div className="stat-card">
-                <FaBrain/>
-                <h2>24h</h2>
-                <p className="stat-title">Focus time</p>
-                <p className="stat-subtitle">+6h</p>
-            </div>
+    <FaBrain/>
+    <h2>{hours}h {minutes}m</h2>
+    <p className="stat-title">Focus Time</p>
+    <p className="stat-subtitle">Total Focus Time</p>
+</div>
 
             <div className="stat-card">
                 <GiProgression/>

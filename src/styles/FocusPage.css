@@ -188,59 +188,101 @@
     color:#a0acbb !important;
 }
 
-.stats{
+.focus-stats{
     background:white;
     border-radius:20px;
     padding:25px;
     border:1px solid #e5e7eb;
 }
 
-.stats h6{
+.focus-stats h6{
     font-size:16px;
     font-weight:700;
     margin-bottom:18px;
 }
 
-.stats-grid{
+.focus-stats-grid{
     display:flex;
-    gap:12px;
+    flex-direction:column;
+    gap:16px;
+    margin-top:20px;
 }
 
-.stat-card{
-    border-radius:16px;
-    padding:22px;
-    text-align:center;
-    flex:1;
+.focus-stat-card{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 22px;
+
+    border-radius:14px;
+    background:#F7F8FC;
+
+    transition:0.3s;
 }
 
-.stat-card:first-child{
+.focus-stat-card:first-child{
     background:#eef2ff;
     border:1px solid #dbe4ff;
 }
 
-.stat-card:first-child h5{
+.focus-stat-card:first-child h5{
     color:#4f46e5;
 }
 
-.stat-card:last-child{
+.focus-stat-card:last-child{
     background:#ecfdf5;
 }
 
-.stat-card h5{
-    font-size:32px;
-    font-weight:800;
-    margin-bottom:8px;
+.focus-stat-card h5{
+    font-size:30px;
+    font-weight:700;
+    color:#5A4FF3;
 }
 
-.stat-card:first-child h5{
+.focus-stat-card:first-child h5{
     color:#4f46e5;
 }
 
-.stat-card:last-child h5{
+.focus-stat-card:last-child h5{
     color:#16a34a;
 }
 
-.stat-card p{
-    color:#6b7280;
-    font-size:14px;
+.focus-stat-card p{
+    color:#6B7280;
+    font-size:15px;
+}
+
+.mode{
+
+    cursor:pointer;
+
+    transition:0.2s;
+
+}
+
+.mode:hover{
+
+    transform:translateY(-3px);
+
+}
+
+.active-mode{
+
+    background:#EEF2FF;
+
+    border:2px solid #4F46E5;
+
+}
+
+.active-mode h6{
+
+    color:#4F46E5;
+
+}
+
+.active-mode p{
+
+    color:#4F46E5;
+
 }

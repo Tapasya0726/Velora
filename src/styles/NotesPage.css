@@ -135,6 +135,16 @@
     font-weight:600;
 }
 
+.categories button.active-category{
+
+    background:#4F46E5;
+
+    color:white;
+
+    border-color:#4F46E5;
+
+}
+
 @media screen and (max-width:768px){
 
     .notes-header{

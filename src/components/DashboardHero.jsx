@@ -1,8 +1,11 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/DashboardHero.css";
 
 export default function DashboardHero({ onAddTask }){
     const [user, setUser] = useState(null);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -24,7 +27,11 @@ export default function DashboardHero({ onAddTask }){
         onClick={onAddTask}>
         + Add Task
         </button>
-        <button>▷ Start Focus</button>
+        <button
+    onClick={() => navigate("/focus")}
+>
+    ▷ Start Focus
+</button>
         </div>
         </section>
 

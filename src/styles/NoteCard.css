@@ -5,6 +5,7 @@
     padding:20px;
     cursor:pointer;
     transition:0.2s;
+    
 }
 
 .note-card:hover{
@@ -14,7 +15,7 @@
     transform:translateY(-5px);
 }
 
-.notecard-header h6{
+.notecard-header h2{
     font-size:15px;
     font-weight:700;
     color:#111827;
@@ -26,6 +27,13 @@
     font-size:14px;
     line-height:1.5;
     margin-bottom:18px;
+
+    display:-webkit-box;
+    -webkit-line-clamp:3;
+    -webkit-box-orient:vertical;
+    overflow:hidden;
+
+    overflow-wrap:anywhere;
 }
 
 .notecard-footer{
@@ -35,40 +43,51 @@
 }
 
 .category{
-    padding:4px 10px;
-    border-radius:8px;
+    display:inline-flex;
+    align-items:center;
+
+    padding:6px 12px;
+
+    background:#EEF2FF;
+    color:#4F46E5;
+
+    border-radius:999px;
+
     font-size:12px;
     font-weight:600;
 }
 
-.category-auth{
-    background:#ede9fe;
-    color:#7c3aed;
-}
-
-.category-react{
-    background:#dbeafe;
-    color:#2563eb;
-}
-
-.category-sql{
-    background:#dcfce7;
-    color:#16a34a;
-}
-
-.category-api{
-    background:#fed7aa;
-    color:#ea580c;
-}
-
-.category-career{
-    background:#fce7f3;
-    color:#db2777;
-}
 .notecard-footer span:last-child{
     font-size:12px;
     color:#9ca3af;
 }
+
+.note-actions{
+
+    display:flex;
+    align-items:center;
+    gap:10px;
+
+}
+
+.icon-btn{
+
+    border:none;
+    background:none;
+
+    cursor:pointer;
+
+    color:#6B7280;
+
+    display:flex;
+    align-items:center;
+
+    font-size:15px;
+
+    transition:.2s;
+
+}
+
 
 @media screen and (max-width:768px){
 
