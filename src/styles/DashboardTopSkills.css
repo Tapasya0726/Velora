@@ -66,19 +66,18 @@
     display:flex;
     align-items:center;
     justify-content:center;
-    font-size:18px;
-}
 
-.js-icon{
+    width:34px;
+    height:34px;
+
+    border-radius:10px;
+
+    background:#eef2ff;
     color:#4f46e5;
-}
 
-.react-icon{
-    color:#68a063;
-}
+    font-size:18px;
 
-.node-icon{
-    color:rgb(219, 175, 28);
+    flex-shrink:0;
 }
 
 .progress-bar{
@@ -92,21 +91,8 @@
 .progress{
     height:100%;
     border-radius:999px;
-}
-
-.js-progress{
-    width:85%;
-    background-color:#4f46e5;
-}
-
-.react-progress{
-    width:50%;
-    background-color:#68a063;
-}
-
-.node-progress{
-    width:25%;
-    background-color:rgb(219, 175, 28)
+    background:#4f46e5;
+    transition:width 0.3s ease;
 }
 
 @media screen and (max-width:768px){

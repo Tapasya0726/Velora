@@ -3,7 +3,8 @@ import NewTaskModal from "../components/NewTaskModal";
 import "../styles/DashboardPage.css"
 import {
     getDashboardStats,
-    getApplicationStats
+    getApplicationStats,
+    getSkillStats
 } from "../services/dashboardService";
 import DashboardHero from "../components/DashboardHero"
 import DashboardStats from "../components/DashboardStats"
@@ -28,6 +29,30 @@ const [applicationStats, setApplicationStats] = useState({
     offer: 0,
     rejected: 0
 });
+
+const [skillStats, setSkillStats] = useState({
+    total: 0,
+    beginner: 0,
+    intermediate: 0,
+    advanced: 0,
+    averageProgress: 0
+});
+
+const fetchSkillStats = async () => {
+
+    try {
+
+        const data = await getSkillStats();
+
+        setSkillStats(data);
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+};
 
 const fetchApplicationStats = async () => {
 
@@ -65,6 +90,7 @@ useEffect(() => {
 
     fetchDashboardStats();
     fetchApplicationStats();
+    fetchSkillStats();
 
 }, []);
 
@@ -74,7 +100,7 @@ useEffect(() => {
         <DashboardHero
          onAddTask={() => setShowModal(true)}
         />
-        <DashboardStats dashboardStats={dashboardStats} />
+        <DashboardStats dashboardStats={dashboardStats} skillStats={skillStats}/>
         <div className="dashboard-row">
         <DashboardDueToday
         refreshTasks={refreshTasks}

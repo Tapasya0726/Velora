@@ -15,3 +15,17 @@ export const getApplicationStats = async () => {
     return response.data;
 
 };
+
+
+export const getSkillStats = async () => {
+    const response = await api.get("/skills/stats");
+    return response.data;
+};
+
+export const getTopSkills = async () => {
+
+    const response = await api.get("/skills/top");
+
+    return response.data;
+
+};

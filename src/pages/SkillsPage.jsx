@@ -1,194 +1,217 @@
-import { FaReact } from "react-icons/fa";
-import { FaHtml5 } from "react-icons/fa";
-import { FaCss3Alt } from "react-icons/fa";
-import { FaJs } from "react-icons/fa";
-import { FaNodeJs } from "react-icons/fa";
-import { FaGitAlt } from "react-icons/fa";
-import {
-    SiTailwindcss,
-    SiPostgresql,
-    SiExpress,
-    SiFigma
-} from "react-icons/si";
-import SkillCard from "../components/SkillCard"; 
+import { useState, useEffect } from "react";
 import AppLayout from "../layouts/AppLayout";
+import { getSkillIcon } from "../utils/getSkillIcon";
+import SkillCard from "../components/SkillCard";
+import AddSkillModal from "../components/AddSkillModal";
+import {
+    getSkills,
+    createSkill,
+    getSkillStats,
+    updateSkill,
+    deleteSkill,
+} from "../services/skillsService";
+
 import "../styles/SkillsPage.css";
 
-export default function SkillsPage(){
-    const skills = [
-        {
-            id:1,
-            icon:<FaReact/>,
-            name: "React.js",
-            category: "Frontend",
-            level: "Advanced",
-            progress: 90
-        },
-        {
-            id: 2,
-            icon: <FaHtml5 />,
-            name: "HTML",
-            category: "Frontend",
-            level: "Advanced",
-            progress: 95
-        },
-        {
-            id: 3,
-            icon: <FaCss3Alt />,
-            name: "CSS",
-            category: "Frontend",
-            level: "Intermediate",
-            progress: 75
-        },
-        {
-            id: 4,
-            icon: <FaJs />,
-            name: "JavaScript",
-            category: "Frontend",
-            level: "Intermediate",
-            progress: 70
-        },
-        {
-            id: 5,
-            icon: <SiTailwindcss />,
-            name: "Tailwind CSS",
-            category: "Frontend",
-            level: "Beginner",
-            progress: 45
-        },
-        {
-            id: 6,
-            icon: <FaNodeJs />,
-            name: "Node.js",
-            category: "Backend",
-            level: "Intermediate",
-            progress: 65
-        },
-        {
-            id: 7,
-            icon: <SiExpress />,
-            name: "Express.js",
-            category: "Backend",
-            level: "Beginner",
-            progress: 40
-        },
-        {
-            id: 8,
-            icon: <SiPostgresql />,
-            name: "PostgreSQL",
-            category: "Backend",
-            level: "Beginner",
-            progress: 35
-        },
-        {
-            id: 9,
-            icon: <FaGitAlt />,
-            name: "Git",
-            category: "Tools",
-            level: "Intermediate",
-            progress: 70
+export default function SkillsPage() {
+
+    const [isModalOpen, setIsModalOpen] = useState(false);
+
+    const [editingSkill, setEditingSkill] = useState(null);
+
+    const [skills, setSkills] = useState([]);
+
+    const [stats, setStats] = useState({
+        total: 0,
+        averageProgress: 0,
+        beginner: 0,
+        intermediate: 0,
+        advanced: 0
+    });
+
+    const categories = [...new Set(skills.map(skill => skill.category))];
+
+    const refreshSkills = async () => {
+
+    try {
+
+        const skillsData = await getSkills();
+        setSkills(skillsData);
+
+        const statsData = await getSkillStats();
+        setStats(statsData);
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+};
+
+    useEffect(() => {
+
+        refreshSkills();
+
+    }, []);
+
+    return (
+
+        <>
+
+            <AppLayout>
+
+                <div className="skills-page">
+
+                    <div className="header-row">
+
+                        <div className="skills-header">
+
+                            <div>
+
+                                <h6>CAREER</h6>
+
+                                <div className="skills-title">
+                                    <h2>Skills</h2>
+                                </div>
+
+                                <span>
+                                    {skills.length} skills · {categories.length} categories
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                        <button
+    className="add-skill"
+    onClick={() => {
+
+        setEditingSkill(null);
+        setIsModalOpen(true);
+
+    }}
+>
+    + Add Skill
+</button>
+
+                    </div>
+
+                    <div className="skills-overview">
+
+                        <h2>{stats.averageProgress}%</h2>
+
+                        <p>Average Skill Level</p>
+
+                        <span>
+                            {stats.advanced} Advanced · {stats.intermediate} Intermediate · {stats.beginner} Beginner
+                        </span>
+
+                    </div>
+
+                    {categories.map((category) => (
+
+                        <div
+                            className="category-section"
+                            key={category}
+                        >
+
+                            <h5>{category.toUpperCase()}</h5>
+
+                            <div className="skills-grid">
+
+                                {skills
+                                    .filter(skill => skill.category === category)
+                                    .map(skill => (
+
+                                        <SkillCard
+                                            key={skill.skill_id}
+                                            icon={getSkillIcon(skill.skill_name)}
+                                            name={skill.skill_name}
+                                            level={skill.level}
+                                            progress={skill.progress}
+
+                                              onEdit={() => {
+
+        setEditingSkill(skill);
+        setIsModalOpen(true);
+
+    }}
+
+    onDelete={async () => {
+
+    const confirmDelete = window.confirm(
+        "Are you sure you want to delete this skill?"
+    );
+
+    if (!confirmDelete) return;
+
+    try {
+
+        await deleteSkill(skill.skill_id);
+
+        await refreshSkills();
+
+    } catch (error) {
+
+        console.error(error);
+
+    }
+
+}}
+                                        />
+
+                                    ))}
+
+                            </div>
+
+                        </div>
+
+                    ))}
+
+                </div>
+
+            </AppLayout>
+
+            <AddSkillModal
+                isOpen={isModalOpen}
+                editingSkill={editingSkill}
+                onClose={() => {
+
+    setEditingSkill(null);
+    setIsModalOpen(false);
+
+}}
+                onSave={async (skill) => {
+
+    try {
+
+        if (editingSkill) {
+
+            await updateSkill(editingSkill.skill_id, skill);
+
+        } else {
+
+            await createSkill(skill);
+
         }
-    ];
-        
-    return(
-        <AppLayout>
-            <div className="skills-page">
-                <div className="header-row">
 
-                    <div className="skills-header">
-                        <div>
-                        <h6>CAREER</h6>
-                          <div className="skills-title">
-                        <h2>Skills</h2>
-                        </div>
-                        <span>{skills.length} skills · 3 categories</span>
-                        </div>
-                    </div>
+        await refreshSkills();
 
-                    <button className="add-skill">
-                        + Add Skill
-                    </button>
+        setEditingSkill(null);
+        setIsModalOpen(false);
 
-                </div>
-                                <div className="skills-overview">
+    } catch (error) {
 
-                    <h2>75%</h2>
+        console.error(error);
 
-                    <p>Average Skill Level</p>
+    }
 
-                    <span>
-                        3 Advanced · 4 Intermediate · 3 Beginner
-                    </span>
+}}
+            />
 
-                </div>
-                 <div className="category-section">
-
-                    <h5>FRONTEND</h5>
-
-                    <div className="skills-grid">
-
-                        {skills
-                            .filter(skill => skill.category === "Frontend")
-                            .map(skill => (
-                                <SkillCard
-                                    key={skill.id}
-                                    icon={skill.icon}
-                                    name={skill.name}
-                                    level={skill.level}
-                                    progress={skill.progress}
-                                />
-                            ))
-                        }
-
-                    </div>
-
-                </div>
-                <div className="category-section">
-
-                    <h5>BACKEND</h5>
-
-                    <div className="skills-grid">
-
-                        {skills
-                            .filter(skill => skill.category === "Backend")
-                            .map(skill => (
-                                <SkillCard
-                                    key={skill.id}
-                                    icon={skill.icon}
-                                    name={skill.name}
-                                    level={skill.level}
-                                    progress={skill.progress}
-                                />
-                            ))
-                        }
-
-                    </div>
-                </div>
-
-                                <div className="category-section">
-
-                    <h5>TOOLS</h5>
-
-                    <div className="skills-grid">
-
-                        {skills
-                            .filter(skill => skill.category === "Tools")
-                            .map(skill => (
-                                <SkillCard
-                                    key={skill.id}
-                                    icon={skill.icon}
-                                    name={skill.name}
-                                    level={skill.level}
-                                    progress={skill.progress}
-                                />
-                            ))
-                        }
-
-                    </div>
-
-                </div>                
-            </div>
-        </AppLayout>
+        </>
 
     );
+
 }

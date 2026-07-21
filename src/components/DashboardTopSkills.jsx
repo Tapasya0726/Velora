@@ -1,58 +1,60 @@
 import "../styles/DashboardTopSkills.css";
-import { FaJs } from "react-icons/fa";
-import { FaReact } from "react-icons/fa";
-import { FaNodeJs } from "react-icons/fa";
+import { getTopSkills } from "../services/dashboardService";
+import { useEffect, useState } from "react";
+import { getSkillIcon } from "../utils/getSkillIcon";
+import { Link } from "react-router-dom";
 import SkillItem from "./SkillItem";
 
 export default function DashboardTopSkills(){
 
-    const skills=[
-        {
-            name:"Javascript",
-            percentage:85,
-            icon:<FaJs/>,
-            iconClass: "js-icon",
-    progressClass: "js-progress"
-  },
-  {
-    name:"React",
-            percentage:50,
-            icon:<FaReact/>,
-            iconClass: "react-icon",
-    progressClass: "react-progress"
-  },
-  {
-    name:"Node.js",
-            percentage:25,
-            icon:<FaNodeJs/>,
-            iconClass: "node-icon",
-    progressClass: "node-progress"
-  }
+    const [skills, setSkills] = useState([]);
 
-    ]
+    useEffect(() => {
 
+    const fetchTopSkills = async () => {
 
+        try {
+
+            const data = await getTopSkills();
+
+console.log("Top Skills:", data);
+
+            setSkills(data);
+
+        } catch (error) {
+
+            console.error(error);
+
+        }
+
+    };
+
+    fetchTopSkills();
+
+}, []);
 
     return(
     <section className="topskills">
         <div className="skills-header">
             <h3>Top skills</h3>
-            <a href="#">View all →</a>
+            <Link to="/skills">
+    View all →
+</Link>
         </div>
 
 <div className="skills">
 
  {
-    skills.map((skill,index) => (
-        <SkillItem
-        key={index}
-        name={skill.name}
-        percentage={skill.percentage}
-        icon={skill.icon}
-        iconClass={skill.iconClass}
-        progressClass={skill.progressClass}
-        />
-    ))
+    skills.map((skill) => (
+
+    <SkillItem
+        key={skill.skill_id}
+        name={skill.skill_name}
+        percentage={skill.progress}
+        icon={getSkillIcon(skill.category)}
+    />
+
+))
  }
 
         </div>

@@ -6,77 +6,101 @@ import { MdWorkOutline } from "react-icons/md";
 import { FaBrain } from "react-icons/fa";
 import { GiProgression } from "react-icons/gi";
 
-export default function DashboardStats({ dashboardStats }){
+export default function DashboardStats({
+    dashboardStats,
+    skillStats
+}) {
     const [tasks, setTasks] = useState([]);
 
     useEffect(() => {
 
-    const fetchTasks = async () => {
+        const fetchTasks = async () => {
 
-        try {
+            try {
 
-            const response = await api.get("/tasks");
+                const response = await api.get("/tasks");
 
-            setTasks(response.data);
+                setTasks(response.data);
 
-        } catch (error) {
+            } catch (error) {
 
-            console.error(error);
+                console.error(error);
 
-        }
+            }
 
-    };
+        };
 
-    fetchTasks();
+        fetchTasks();
 
-}, []);
+    }, []);
 
-const completedTasks = tasks.filter(
-    task => task.status === "Completed"
-).length;
+    const completedTasks = tasks.filter(
+        task => task.status === "Completed"
+    ).length;
 
-const hours = Math.floor(
-    dashboardStats.totalFocusMinutes / 60
-);
+    const hours = Math.floor(
+        dashboardStats.totalFocusMinutes / 60
+    );
 
-const minutes =
-    dashboardStats.totalFocusMinutes % 60;
-    return(
+    const minutes =
+        dashboardStats.totalFocusMinutes % 60;
+
+    const skillsInProgress =
+        skillStats.beginner + skillStats.intermediate;
+
+    return (
         <section className="stats">
+
             <div className="stat-card">
-                <FaTasks/>
+                <FaTasks />
                 <h2>{completedTasks}</h2>
                 <p className="stat-title">Tasks done</p>
                 <p className="stat-subtitle">Total Completed</p>
             </div>
 
             <div className="stat-card">
-                <MdWorkOutline/>
+                <MdWorkOutline />
+
                 <h2>{dashboardStats.totalApplications}</h2>
 
-<p className="stat-title">
-    Applications
-</p>
+                <p className="stat-title">
+                    Applications
+                </p>
 
-<p className="stat-subtitle">
-    {dashboardStats.interviews} interview
-    {dashboardStats.interviews !== 1 ? "s" : ""}
-</p>      </div>
-
-            <div className="stat-card">
-    <FaBrain/>
-    <h2>{hours}h {minutes}m</h2>
-    <p className="stat-title">Focus Time</p>
-    <p className="stat-subtitle">Total Focus Time</p>
-</div>
-
-            <div className="stat-card">
-                <GiProgression/>
-                <h2>9</h2>
-                <p className="stat-title">Skills</p>
-                <p className="stat-subtitle">3 in progress</p>
+                <p className="stat-subtitle">
+                    {dashboardStats.interviews} interview
+                    {dashboardStats.interviews !== 1 ? "s" : ""}
+                </p>
             </div>
-        </section>
 
+            <div className="stat-card">
+                <FaBrain />
+
+                <h2>{hours}h {minutes}m</h2>
+
+                <p className="stat-title">
+                    Focus Time
+                </p>
+
+                <p className="stat-subtitle">
+                    Total Focus Time
+                </p>
+            </div>
+
+            <div className="stat-card">
+                <GiProgression />
+
+                <h2>{skillStats.total}</h2>
+
+                <p className="stat-title">
+                    Skills
+                </p>
+
+                <p className="stat-subtitle">
+                    {skillsInProgress} in progress
+                </p>
+            </div>
+
+        </section>
     );
 }

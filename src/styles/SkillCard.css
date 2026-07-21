@@ -22,10 +22,12 @@
     margin-bottom:18px;
 }
 
-.skill-info{
-    display:flex;
-    align-items:center;
-    gap:12px;
+.skill-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
 }
 
 .skill-icon{
@@ -33,17 +35,25 @@
     height:42px;
     border-radius:12px;
     background:#f5f3ff;
+
     display:flex;
     justify-content:center;
     align-items:center;
+
     color:#4f46e5;
-    font-size:20px;
+    font-size:22px;
+
+    flex-shrink:0;
 }
 
-.skill-info h6{
-    font-size:16px;
-    font-weight:700;
-    color:#111827;
+.skill-info h6 {
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .level{
@@ -93,4 +103,40 @@
 
 .progress-fill.beginner{
     background:#ea580c;
+}
+
+.skill-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.icon-btn {
+    width: 34px;
+    height: 34px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: transparent;
+    color: #6b7280;
+    transition: all 0.2s ease;
+}
+
+.icon-btn svg {
+    font-size: 18px;
+}
+
+.skill-edit-btn:hover {
+    background: #eef2ff;
+    color: #4f46e5;
+}
+
+.skill-delete-btn:hover {
+    background: #fef2f2;
+    color: #ef4444;
 }
