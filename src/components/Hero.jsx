@@ -1,5 +1,6 @@
  import { useState, useEffect } from "react";
  import "../styles/Hero.css"
+import { Link } from "react-router-dom";
  
  
  export default function Hero(){
@@ -48,7 +49,7 @@
     </p>
 
     <div className="buttons">
-      <button className="free">Start for free →</button>
+      <Link to="/login"><button className="free">Start for free →</button></Link>
      {/* <button className="demo">See a demo →</button> */} 
     </div>
 

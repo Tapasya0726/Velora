@@ -1,5 +1,7 @@
 import logo from "../assets/veloralogo.png"
 import "../styles/Navbar.css"
+import { Link } from "react-router-dom";
+
 export default function Navbar(){
     return(
            <nav>
@@ -12,13 +14,12 @@ export default function Navbar(){
               <div className="centersection">
                 <a href="#features">Features</a>
                 <a href="#howitworks">How it works</a>
-                <a href="#">Pricing</a>
               </div>
         
         
               <div className="rightsection">
-              <a href="#">Log in</a>
-              <button>Get Started Free</button>
+              <Link to="/login">Log in</Link>
+              <Link to="/login"><button>Get Started Free</button></Link>
               </div>
         
            </nav>
