@@ -1,33 +1,51 @@
 import "../styles/RoadmapResource.css";
+import { FaBookOpen, FaYoutube } from "react-icons/fa";
 
 export default function RoadmapResource({
-  icon,
   title,
-  platform,
-  duration,
+  resourceType,
+  url,
 }) {
+
+  const icon =
+    resourceType === "Video"
+      ? <FaYoutube />
+      : <FaBookOpen />;
+
   return (
     <div className="resource-card">
+
       <div className="resource-header">
+
         <div className="resource-info">
+
           <div className="resource-icon">
             {icon}
           </div>
 
           <div>
             <h4>{title}</h4>
-            <p>{platform}</p>
+            <p>{resourceType}</p>
           </div>
+
         </div>
+
       </div>
 
       <div className="resource-footer">
-        <span>⏱ {duration}</span>
 
-        <button className="start-btn">
-          Start Learning
-        </button>
+        <a
+          href={url}
+          target="_blank"
+          rel="noreferrer"
+        >
+          <button className="start-btn">
+            Start Learning
+          </button>
+        </a>
+
       </div>
+
     </div>
   );
 }

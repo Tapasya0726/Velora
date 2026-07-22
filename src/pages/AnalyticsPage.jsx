@@ -1,21 +1,24 @@
 import AppLayout from "../layouts/AppLayout";
 
-import AnalyticsStatCard from "../components/AnalyticsStatCard";
-import ActivityHeatmap from "../components/ActivityHeatmap";
-import AnalyticsCategoryProgress from "../components/AnalyticsCategoryProgress";
-import AnalyticsGoalCompletion from "../components/AnalyticsGoalCompletion";
+// import AnalyticsStatCard from "../components/AnalyticsStatCard";
+// import ActivityHeatmap from "../components/ActivityHeatmap";
+// import AnalyticsCategoryProgress from "../components/AnalyticsCategoryProgress";
+// import AnalyticsGoalCompletion from "../components/AnalyticsGoalCompletion";
 
 import "../styles/AnalyticsPage.css";
 
-import {
-  FaTrophy,
-  FaClock,
-  FaFire,
-  FaBullseye
-} from "react-icons/fa";
+import { FaChartLine } from "react-icons/fa";
+
+// import {
+//   FaTrophy,
+//   FaClock,
+//   FaFire,
+//   FaBullseye
+// } from "react-icons/fa";
 
 export default function AnalyticsPage() {
 
+  /*
   const stats = [
     {
       id: 1,
@@ -94,13 +97,12 @@ export default function AnalyticsPage() {
     total: 25,
     percentage: 72
   };
+  */
 
   return (
     <AppLayout>
 
       <div className="analytics-page">
-
-        {/* Header */}
 
         <div className="analytics-header">
           <h6>INSIGHTS</h6>
@@ -108,68 +110,51 @@ export default function AnalyticsPage() {
           <p>Track your productivity and learning progress.</p>
         </div>
 
-        {/* Statistics */}
+        {/*
+        =============================
+        Future Analytics Module
+        =============================
+        Features planned:
+        - Weekly Statistics
+        - Activity Heatmap
+        - Time by Category
+        - Goal Completion
+        - Productivity Insights
+        */}
 
-        <div className="stats-grid">
+        <div className="analytics-coming-soon">
 
-          {stats.map((item) => (
+          <div className="coming-soon-icon">
+  <FaChartLine />
+</div>
 
-            <AnalyticsStatCard
-              key={item.id}
-              icon={item.icon}
-              value={item.value}
-              title={item.title}
-              subtitle={item.subtitle}
-            />
+          <h2>Analytics Coming Soon</h2>
 
-          ))}
+          <p>
+            We're working on powerful analytics to help you understand
+            your productivity, learning progress, and focus habits.
+          </p>
 
-        </div>
+          <div className="coming-soon-features">
 
-        {/* Activity Heatmap */}
+            <div>📈 Productivity Trends</div>
 
-        <div className="analytics-section">
+            <div>🔥 Focus Session Insights</div>
 
-          <ActivityHeatmap
-            activityData={activityData}
-          />
+            <div>🎯 Goal Completion Reports</div>
 
-        </div>
+            <div>📅 Activity Heatmaps</div>
 
-        {/* Bottom Section */}
-
-        <div className="analytics-bottom">
-
-          <div className="category-section">
-
-            <h3>Time by Category</h3>
-
-            <div className="category-list">
-
-              {categories.map((item) => (
-
-                <AnalyticsCategoryProgress
-                  key={item.id}
-                  category={item.category}
-                  hours={item.hours}
-                  progress={item.progress}
-                />
-
-              ))}
-
-            </div>
+            <div>📚 Learning Progress Analytics</div>
 
           </div>
 
-          <div className="goal-section">
-
-            <AnalyticsGoalCompletion
-              completed={goalData.completed}
-              total={goalData.total}
-              percentage={goalData.percentage}
-            />
-
-          </div>
+          <button
+            className="coming-soon-btn"
+            disabled
+          >
+            Available in a Future Update
+          </button>
 
         </div>
 

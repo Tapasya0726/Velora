@@ -1,9 +1,22 @@
 import "../styles/RoadmapMilestone.css"
 import { FaCheckCircle, FaPlayCircle, FaRegCircle } from "react-icons/fa";
 
-export default function RoadmapMilestone({title,duration,status}){
+export default function RoadmapMilestone({
+  roadmapItemId,
+  title,
+  duration,
+  status,
+  onComplete,
+}) {
     return(
-        <div className="milestone-card">
+      <div
+  className="milestone-card"
+  onClick={() => {
+    if (status !== "Completed") {
+      onComplete(roadmapItemId);
+    }
+  }}
+>
          <div className="milestone-header">
             <div className="milestone-icon">
                 {status === "Completed" && 
