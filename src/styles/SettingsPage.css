@@ -2,6 +2,10 @@
     width:100%;
 }
 
+.page-loading{
+    margin-top: 8px;
+}
+
 /* ================= Header ================= */
 
 .settings-header{

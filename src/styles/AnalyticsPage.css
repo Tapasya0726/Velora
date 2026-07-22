@@ -114,7 +114,6 @@
 }
 
 @media (max-width:480px){
-
     .analytics-header h6{
         font-size:9px;
     }
@@ -147,16 +146,20 @@
         gap:20px;
     }
 
+    .analytics-coming-soon{
+        padding:24px 16px;
+    }
 }
 
 /* ================= Coming Soon ================= */
 
 .analytics-coming-soon{
-    background:#ffffff;
+    background:linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
     border:1px solid #e5e7eb;
-    border-radius:20px;
+    border-radius:24px;
     padding:60px 40px;
     text-align:center;
+    box-shadow:0 10px 24px rgba(15, 23, 42, 0.04);
 }
 
 .coming-soon-icon{

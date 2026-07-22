@@ -115,7 +115,11 @@ if (loading) {
 
     return (
         <AppLayout>
-            <h2>Loading...</h2>
+            <div className="page-loading">
+                <div className="page-loading__spinner" aria-hidden="true" />
+                <h2>Preparing your resume workspace…</h2>
+                <p>Gathering your latest profile details and progress insights.</p>
+            </div>
         </AppLayout>
     );
 

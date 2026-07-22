@@ -1,5 +1,6 @@
 import ApplicationCard from "../components/ApplicationCard";
 import AddApplicationModal from "../components/AddApplicationModal";
+import EmptyState from "../components/EmptyState";
 import AppLayout from "../layouts/AppLayout";
 import "../styles/ApplicationsPage.css";
 import { useEffect, useState } from "react";
@@ -149,6 +150,15 @@ useEffect(() => {
                         <h6>PIPELINE</h6>
                     </div>
 
+                    {applications.length === 0 ? (
+                        <EmptyState
+                            icon={<span>📬</span>}
+                            title="No applications yet"
+                            description="Track every opportunity you pursue in one place, from applications to interviews and offers."
+                            actionLabel="Log your first application"
+                            onAction={() => setIsModalOpen(true)}
+                        />
+                    ) : (
                     <div className="major-cards">
 
                         {/* Applied */}
@@ -268,6 +278,7 @@ useEffect(() => {
                         </div>
 
                     </div>
+                    )}
 
                 </div>
 

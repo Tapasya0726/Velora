@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import api from "../api/axios";
 import NoteCard from "../components/NoteCard";
 import NewNoteModal from "../components/NewNoteModal";
+import EmptyState from "../components/EmptyState";
 import AppLayout from "../layouts/AppLayout";
 import "../styles/NotesPage.css";
 
@@ -185,9 +186,30 @@ export default function NotesPage() {
 
                 <div className="notes-grid">
 
-                    {filteredNotes.map(note => (
+                    {filteredNotes.length === 0 ? (
+                        <EmptyState
+                            icon={<span>✎</span>}
+                            title={notes.length === 0 ? "Start collecting ideas" : "No notes match your search"}
+                            description={
+                                notes.length === 0
+                                    ? "Capture snippets, plans, and inspiration in one place so your workspace stays clear."
+                                    : "Try a broader search or switch categories to uncover the note you need."
+                            }
+                            actionLabel={notes.length === 0 ? "Create your first note" : "Clear search"}
+                            onAction={() => {
+                                if (notes.length === 0) {
+                                    setSelectedNote(null);
+                                    setShowModal(true);
+                                } else {
+                                    setSearch("");
+                                    setSelectedCategory("All");
+                                }
+                            }}
+                        />
+                    ) : (
+                        filteredNotes.map(note => (
 
-                        <NoteCard
+                            <NoteCard
 
                             key={note.note_id}
 
@@ -221,9 +243,10 @@ export default function NotesPage() {
                                 )
                             }
 
-                        />
+                            />
 
-                    ))}
+                        ))
+                    )}
 
                     <div
 

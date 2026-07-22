@@ -16,6 +16,7 @@ import {
 } from "../services/roadmapService";
 
 import "../styles/RoadmapPage.css";
+import EmptyState from "../components/EmptyState";
 import { FaBookOpen } from "react-icons/fa";
 
 export default function RoadmapPage() {
@@ -27,7 +28,7 @@ const [resources, setResources] = useState([]);
 const [progress, setProgress] = useState(0);
 
 const [roadmapType, setRoadmapType] = useState("");
-/*const [selectedRoadmap, setSelectedRoadmap] = useState("");*/
+const [loading, setLoading] = useState(true);
 
 useEffect(() => {
   loadRoadmap();
@@ -37,14 +38,14 @@ const loadRoadmap = async () => {
   try {
     const data = await getRoadmap();
 
-    setMilestones(data.roadmapItems);
-    setResources(data.resources);
-    setProgress(data.progress);
-    setRoadmapType(data.roadmapType);
-
-  setSelectedRoadmap(data.roadmapType);
+    setMilestones(data.roadmapItems || []);
+    setResources(data.resources || []);
+    setProgress(data.progress || 0);
+    setRoadmapType(data.roadmapType || "Roadmap");
   } catch (error) {
     console.error(error);
+  } finally {
+    setLoading(false);
   }
 };
 
@@ -108,7 +109,25 @@ const handleComplete = async (roadmapItemId) => {
   </div>*/}
 </div>
 
-        <section className="roadmap-section">
+        {loading ? (
+          <div className="page-loading roadmap-loading">
+            <div className="page-loading__spinner" aria-hidden="true" />
+            <h2>Loading your roadmap…</h2>
+            <p>Preparing your next milestones and resources.</p>
+          </div>
+        ) : (
+          <>
+            <div className="progress-card">
+              <div className="progress-info">
+                <h4>Current progress</h4>
+                <span>{progress}%</span>
+              </div>
+              <div className="progress-bar">
+                <div className="progress-fill" style={{ width: `${progress}%` }} />
+              </div>
+            </div>
+
+            <section className="roadmap-section">
 
           <h3>Learning Milestones</h3>
 
@@ -199,6 +218,9 @@ const handleComplete = async (roadmapItemId) => {
   </div>
 
 </div>
+
+          </>
+        )}
 
       </div>
 

@@ -2,6 +2,10 @@
     width:100%;
 }
 
+.page-loading{
+    margin-top: 8px;
+}
+
 /* ================= Header ================= */
 
 .roadmap-header{
@@ -119,11 +123,12 @@
 /* ================= Progress Card ================= */
 
 .progress-card{
-    background:#ffffff;
+    background:linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
     border:1px solid #e5e7eb;
-    border-radius:20px;
+    border-radius:24px;
     padding:24px;
     margin-bottom:30px;
+    box-shadow:0 10px 24px rgba(15, 23, 42, 0.04);
 }
 
 .progress-info{
@@ -244,7 +249,6 @@
 }
 
 @media (max-width:480px){
-
     .roadmap-header h6{
         font-size:9px;
     }
@@ -288,4 +292,11 @@
         gap:16px;
     }
 
+    .future-roadmap-grid{
+        grid-template-columns:1fr;
+    }
+
+    .future-roadmap-card{
+        padding:18px;
+    }
 }

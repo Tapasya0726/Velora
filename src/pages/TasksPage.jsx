@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import api from "../api/axios";
 import TaskCard from "../components/TaskCard";
 import NewTaskModal from "../components/NewTaskModal";
+import EmptyState from "../components/EmptyState";
 import "../styles/TasksPage.css";
 import AppLayout from "../layouts/AppLayout";
 
@@ -157,21 +158,31 @@ const handleToggleStatus = async (task) => {
 
             </div>
 
-            <section className="pending">
+            {tasks.length === 0 ? (
+                <EmptyState
+                    icon={<span>✓</span>}
+                    title="No tasks yet"
+                    description="Capture what needs attention today and keep momentum moving with a simple, focused task board."
+                    actionLabel="Create your first task"
+                    onAction={() => setShowModal(true)}
+                />
+            ) : (
+                <>
+                    <section className="pending">
 
-                <h6>
+                        <h6>
 
-                    Pending (
-                    {tasks.filter(task => task.status === "Pending").length}
-                    )
+                            Pending (
+                            {tasks.filter(task => task.status === "Pending").length}
+                            )
 
-                </h6>
+                        </h6>
 
-                {
+                        {
 
-                    tasks
-                        .filter(task => task.status === "Pending")
-                        .map(task => (
+                            tasks
+                                .filter(task => task.status === "Pending")
+                                .map(task => (
 
                             <TaskCard
     key={task.task_id}
@@ -192,21 +203,21 @@ const handleToggleStatus = async (task) => {
 
             </section>
 
-            <section className="completed">
+                    <section className="completed">
 
-                <h6>
+                        <h6>
 
-                    Completed (
-                    {tasks.filter(task => task.status === "Completed").length}
-                    )
+                            Completed (
+                            {tasks.filter(task => task.status === "Completed").length}
+                            )
 
-                </h6>
+                        </h6>
 
-                {
+                        {
 
-                    tasks
-                        .filter(task => task.status === "Completed")
-                        .map(task => (
+                            tasks
+                                .filter(task => task.status === "Completed")
+                                .map(task => (
 
                             <TaskCard
     key={task.task_id}
@@ -221,11 +232,13 @@ const handleToggleStatus = async (task) => {
 
 />
 
-                        ))
+                            ))
 
-                }
+                        }
 
-            </section>
+                    </section>
+                </>
+            )}
 
             {
                 showModal && (

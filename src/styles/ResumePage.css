@@ -2,6 +2,10 @@
     width:100%;
 }
 
+.page-loading{
+    margin-top: 8px;
+}
+
 .resume-header h6{
     color:#4f46e5;
     font-size:10px;
@@ -29,7 +33,7 @@
 
 .edit-btn{
     border:none;
-    border-radius:12px;
+    border-radius:999px;
     padding:13px 20px;
     font-size:14px;
     font-weight:600;
@@ -47,14 +51,15 @@
 }
 
 .score-card{
-    background:white;
+    background:linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
     border:1px solid #e5e7eb;
-    border-radius:20px;
+    border-radius:24px;
     padding:28px;
     margin:30px 0;
     display:flex;
     align-items:center;
     gap:25px;
+    box-shadow:0 10px 24px rgba(15, 23, 42, 0.04);
 }
 
 .score-circle{
@@ -115,7 +120,7 @@
     color:#fff;
     border:none;
     padding:10px 18px;
-    border-radius:8px;
+    border-radius:999px;
     font-size:14px;
     font-weight:600;
     cursor:pointer;
@@ -300,7 +305,6 @@
 }
 
 @media (max-width: 480px){
-
     .resume-header h6{
         font-size:9px;
     }
@@ -345,4 +349,13 @@
         line-height:1.5;
     }
 
+    .education-item{
+        padding:16px;
+    }
+
+    .education-actions{
+        position:static;
+        margin-top:12px;
+        justify-content:flex-start;
+    }
 }

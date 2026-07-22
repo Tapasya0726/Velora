@@ -36,11 +36,12 @@
 }
 
 .step-card{
-  background-color:#f9fafb;
+  background:linear-gradient(180deg, #ffffff 0%, #f9fafb 100%);
   padding:35px 30px;
-  border-radius:20px;
+  border-radius:24px;
   text-align:left;
   border:1px solid #e5e7eb;
+  box-shadow:0 8px 24px rgba(15, 23, 42, 0.03);
 }
 
 .step-no{

@@ -2,6 +2,9 @@
     width:100%;
 }
 
+.page-loading{
+    margin-top: 8px;
+}
 
 .header-row{
     display:flex;
@@ -34,7 +37,7 @@
     background:#4f46e5;
     color:white;
     border:none;
-    border-radius:12px;
+    border-radius:999px;
     padding:14px 22px;
     cursor:pointer;
     font-size:14px;
@@ -55,10 +58,11 @@
 
 .summ-card{
     background:white;
-    border-radius:18px;
+    border-radius:20px;
     padding:24px;
     text-align:center;
     border:1px solid #e5e7eb;
+    box-shadow:0 8px 24px rgba(15, 23, 42, 0.04);
 }
 
 .summ-card h4{
@@ -194,11 +198,24 @@
     color:#dc2626;
 }
 
-@media screen and (max-width:768px){
+@media screen and (max-width:1024px){
+    .summary{
+        grid-template-columns:repeat(2, 1fr);
+    }
 
+    .major-cards{
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media screen and (max-width:768px){
     .header-row{
         flex-direction:column;
         gap:20px;
+    }
+
+    .app-header h2{
+        font-size:28px;
     }
 
     .add{
@@ -206,11 +223,34 @@
     }
 
     .summary{
-        grid-template-columns:repeat(2,1fr);
+        grid-template-columns:1fr 1fr;
     }
 
     .major-cards{
         grid-template-columns:1fr;
     }
+}
 
+@media screen and (max-width:480px){
+    .app-header h6{
+        font-size:9px;
+    }
+
+    .app-header h2{
+        font-size:24px;
+    }
+
+    .app-header p{
+        font-size:13px;
+    }
+
+    .summary{
+        grid-template-columns:1fr;
+    }
+
+    .summ-card,
+    .major-card{
+        padding:16px;
+        border-radius:16px;
+    }
 }

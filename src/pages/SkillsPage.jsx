@@ -3,6 +3,7 @@ import AppLayout from "../layouts/AppLayout";
 import { getSkillIcon } from "../utils/getSkillIcon";
 import SkillCard from "../components/SkillCard";
 import AddSkillModal from "../components/AddSkillModal";
+import EmptyState from "../components/EmptyState";
 import {
     getSkills,
     createSkill,
@@ -109,7 +110,16 @@ export default function SkillsPage() {
 
                     </div>
 
-                    {categories.map((category) => (
+                    {skills.length === 0 ? (
+                        <EmptyState
+                            icon={<span>⚡</span>}
+                            title="Build your skill library"
+                            description="Add the tools, technologies, and strengths you want to track so your progress stays visible."
+                            actionLabel="Add your first skill"
+                            onAction={() => setIsModalOpen(true)}
+                        />
+                    ) : (
+                        categories.map((category) => (
 
                         <div
                             className="category-section"
@@ -167,7 +177,8 @@ export default function SkillsPage() {
 
                         </div>
 
-                    ))}
+                        ))
+                    )}
 
                 </div>
 
