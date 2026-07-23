@@ -16,7 +16,7 @@ export default function HowItWorks(){
             1
           </div>
          <div> <h3>Create your account</h3>
-          <p>Sign up with your university email. Tell Velora your focus area and 
+          <p>Sign up with your email. Tell Velora your university and 
           graduation year. That's it.</p>
         </div>
         </div>

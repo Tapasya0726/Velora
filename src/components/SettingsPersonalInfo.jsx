@@ -92,16 +92,22 @@ localStorage.setItem(
       <form className="personal-info-form">
 
         <div className="form-group">
-          <label>Full Name</label>
+          <label className="field-label">
+            <span>Full Name</span>
+            <span className="required-mark">*</span>
+          </label>
           <input
             type="text"
             value={name}
-    onChange={(e) => setName(e.target.value)}
+            onChange={(e) => setName(e.target.value)}
+            required
           />
         </div>
 
         <div className="form-group">
-          <label>Email</label>
+          <label className="field-label">
+            <span>Email</span>
+          </label>
           <input
             type="email"
             value={email}
@@ -112,20 +118,28 @@ localStorage.setItem(
         <div className="form-row">
 
           <div className="form-group">
-            <label>University</label>
+            <label className="field-label">
+              <span>University</span>
+              <span className="required-mark">*</span>
+            </label>
             <input
               type="text"
               value={uni}
-    onChange={(e) => setUni(e.target.value)}
+              onChange={(e) => setUni(e.target.value)}
+              required
             />
           </div>
 
           <div className="form-group">
-            <label>Major</label>
+            <label className="field-label">
+              <span>Major</span>
+              <span className="required-mark">*</span>
+            </label>
             <input
               type="text"
               value={userMajor}
-    onChange={(e) => setUserMajor(e.target.value)}
+              onChange={(e) => setUserMajor(e.target.value)}
+              required
             />
           </div>
 
@@ -134,22 +148,30 @@ localStorage.setItem(
         <div className="form-row">
 
           <div className="form-group">
-            <label>Year</label>
+            <label className="field-label">
+              <span>Year</span>
+              <span className="required-mark">*</span>
+            </label>
             <input
               type="number"
               value={userYear}
-    onChange={(e) => setUserYear(e.target.value)}
+              onChange={(e) => setUserYear(e.target.value)}
+              required
             />
           </div>
 
           <div className="form-group">
-            <label>Graduation Year</label>
+            <label className="field-label">
+              <span>Graduation Year</span>
+              <span className="required-mark">*</span>
+            </label>
             <input
                 type="number"
-    min="2000"
-    max="2100"
-    value={gradYear}
-    onChange={(e) => setGradYear(e.target.value)}
+                min="2000"
+                max="2100"
+                value={gradYear}
+                onChange={(e) => setGradYear(e.target.value)}
+                required
             />
           </div>
 

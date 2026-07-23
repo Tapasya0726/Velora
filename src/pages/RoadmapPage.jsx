@@ -38,6 +38,8 @@ const loadRoadmap = async () => {
   try {
     const data = await getRoadmap();
 
+     console.log("Roadmap API Response:", data);
+
     setMilestones(data.roadmapItems || []);
     setResources(data.resources || []);
     setProgress(data.progress || 0);

@@ -85,22 +85,30 @@ function LoginPage() {
                         onSubmit={handleLogin}
                     >
 
-                        <label>Email</label>
+                        <label className="field-label">
+                            <span>Email</span>
+                            <span className="required-mark">*</span>
+                        </label>
 
                         <input
                             type="email"
                             placeholder="Enter your email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}
+                            required
                         />
 
-                        <label>Password</label>
+                        <label className="field-label">
+                            <span>Password</span>
+                            <span className="required-mark">*</span>
+                        </label>
 
                         <input
                             type="password"
                             placeholder="Enter your password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
+                            required
                         />
 
                         <Link to="#">

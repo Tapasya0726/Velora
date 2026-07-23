@@ -38,11 +38,14 @@
     color:white;
     border:none;
     border-radius:999px;
-    padding:14px 22px;
+    padding:12px 16px;
     cursor:pointer;
     font-size:14px;
     font-weight:600;
     transition:0.2s;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
 }
 
 .add:hover{
@@ -52,14 +55,14 @@
 .summary{
     display:grid;
     grid-template-columns:repeat(4,1fr);
-    gap:18px;
-    margin-bottom:35px;
+    gap:16px;
+    margin-bottom:28px;
 }
 
 .summ-card{
     background:white;
-    border-radius:20px;
-    padding:24px;
+    border-radius:16px;
+    padding:18px;
     text-align:center;
     border:1px solid #e5e7eb;
     box-shadow:0 8px 24px rgba(15, 23, 42, 0.04);
@@ -128,10 +131,10 @@
 
 .major-card{
     background:white;
-    border-radius:18px;
+    border-radius:16px;
     border:1px solid #e5e7eb;
-    padding:18px;
-    min-height:420px;
+    padding:16px;
+    min-height:320px;
 }
 
 
@@ -212,6 +215,7 @@
     .header-row{
         flex-direction:column;
         gap:20px;
+        align-items:flex-start;
     }
 
     .app-header h2{
@@ -219,15 +223,25 @@
     }
 
     .add{
-        width:100%;
+        width:auto;
+        align-self:flex-start;
+        padding:10px 12px;
+        font-size:13px;
     }
 
     .summary{
         grid-template-columns:1fr 1fr;
+        gap:12px;
     }
 
     .major-cards{
         grid-template-columns:1fr;
+        gap:14px;
+    }
+
+    .major-card{
+        padding:14px;
+        min-height:auto;
     }
 }
 
@@ -244,13 +258,27 @@
         font-size:13px;
     }
 
+    .add{
+        padding:9px 11px;
+        font-size:12px;
+    }
+
     .summary{
-        grid-template-columns:1fr;
+        grid-template-columns:1fr 1fr;
+        gap:10px;
     }
 
     .summ-card,
     .major-card{
-        padding:16px;
+        padding:14px;
         border-radius:16px;
+    }
+
+    .major-card-header{
+        margin-bottom:14px;
+    }
+
+    .major-card-header h6{
+        font-size:11px;
     }
 }

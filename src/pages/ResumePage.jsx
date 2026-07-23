@@ -8,6 +8,7 @@ import EditResumeModal from "../components/EditResumeModal";
 import { saveResume } from "../services/resumeService";
 import AddEducationModal from "../components/AddEducationModal";
 import AddProjectModal from "../components/AddProjectModal";
+import { FiPlus, FiEdit2, FiTrash2 } from "react-icons/fi";
 
 import {
     createEducation,
@@ -140,7 +141,8 @@ if (loading) {
                 </div>
                 <div className="btns">
                     <button className="edit-btn" onClick={() => setIsEditModalOpen(true)}>
-                        📝Edit Resume
+                        <FiEdit2 />
+                        <span>Edit Resume</span>
                         </button>
                 </div>
                 </div>
@@ -266,7 +268,8 @@ if (loading) {
 
             }}
         >
-            + Add Education
+            <FiPlus />
+            <span>Add Education</span>
         </button>
 
     </div>
@@ -287,6 +290,7 @@ if (loading) {
                 <div className="education-actions">
 
                     <button
+                        type="button"
                         className="education-edit-btn"
                         onClick={() => {
 
@@ -294,11 +298,13 @@ if (loading) {
                             setIsEducationModalOpen(true);
 
                         }}
+                        aria-label="Edit education"
                     >
-                        Edit
+                        <FiEdit2 />
                     </button>
 
                     <button
+                       type="button"
                        className="education-delete-btn"
                         onClick={async () => {
 
@@ -319,8 +325,9 @@ if (loading) {
                             }
 
                         }}
+                        aria-label="Delete education"
                     >
-                        Delete
+                        <FiTrash2 />
                     </button>
 
                 </div>
@@ -355,7 +362,8 @@ if (loading) {
                 setIsProjectModalOpen(true);
             }}
         >
-            + Add Project
+            <FiPlus />
+            <span>Add Project</span>
         </button>
     </div>
 
@@ -377,6 +385,7 @@ if (loading) {
                 <div className="project-actions">
 
                     <button
+                        type="button"
                         className="project-edit-btn"
                         onClick={() => {
 
@@ -384,11 +393,13 @@ if (loading) {
                             setIsProjectModalOpen(true);
 
                         }}
+                        aria-label="Edit project"
                     >
-                        Edit
+                        <FiEdit2 />
                     </button>
 
                     <button
+                        type="button"
                         className="project-delete-btn"
                         onClick={async () => {
 
@@ -409,8 +420,9 @@ if (loading) {
                             }
 
                         }}
+                        aria-label="Delete project"
                     >
-                        Delete
+                        <FiTrash2 />
                     </button>
 
                 </div>

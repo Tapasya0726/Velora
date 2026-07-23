@@ -66,38 +66,44 @@ const handleChangePassword = async () => {
       <form className="change-password-form">
 
         <div className="form-group">
-          <label>Current Password</label>
-          <input
-    type="password"
-    placeholder="Enter current password"
-    value={currentPassword}
-    onChange={(e) =>
-        setCurrentPassword(e.target.value)
-    }
-/>
-        </div>
-
-        <div className="form-group">
-          <label>New Password</label>
+          <label className="field-label">
+            <span>Current Password</span>
+            <span className="required-mark">*</span>
+          </label>
           <input
             type="password"
-            placeholder="Minimum 8 characters"
-            value={newPassword}
-    onChange={(e) =>
-        setNewPassword(e.target.value)
-    }
+            placeholder="Enter current password"
+            value={currentPassword}
+            onChange={(e) => setCurrentPassword(e.target.value)}
+            required
           />
         </div>
 
         <div className="form-group">
-          <label>Confirm Password</label>
+          <label className="field-label">
+            <span>New Password</span>
+            <span className="required-mark">*</span>
+          </label>
+          <input
+            type="password"
+            placeholder="Minimum 8 characters"
+            value={newPassword}
+            onChange={(e) => setNewPassword(e.target.value)}
+            required
+          />
+        </div>
+
+        <div className="form-group">
+          <label className="field-label">
+            <span>Confirm Password</span>
+            <span className="required-mark">*</span>
+          </label>
           <input
             type="password"
             placeholder="Re-enter new password"
-             value={confirmPassword}
-    onChange={(e) =>
-        setConfirmPassword(e.target.value)
-    }
+            value={confirmPassword}
+            onChange={(e) => setConfirmPassword(e.target.value)}
+            required
           />
         </div>
 

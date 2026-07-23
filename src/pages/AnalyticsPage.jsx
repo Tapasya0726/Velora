@@ -8,6 +8,7 @@ import AppLayout from "../layouts/AppLayout";
 import "../styles/AnalyticsPage.css";
 
 import { FaChartLine } from "react-icons/fa";
+import { FiBarChart2, FiTarget, FiCalendar, FiBookOpen, FiZap } from "react-icons/fi";
 
 // import {
 //   FaTrophy,
@@ -137,15 +138,15 @@ export default function AnalyticsPage() {
 
           <div className="coming-soon-features">
 
-            <div>📈 Productivity Trends</div>
+            <div><FiBarChart2 /> Productivity Trends</div>
 
-            <div>🔥 Focus Session Insights</div>
+            <div><FiZap /> Focus Session Insights</div>
 
-            <div>🎯 Goal Completion Reports</div>
+            <div><FiTarget /> Goal Completion Reports</div>
 
-            <div>📅 Activity Heatmaps</div>
+            <div><FiCalendar /> Activity Heatmaps</div>
 
-            <div>📚 Learning Progress Analytics</div>
+            <div><FiBookOpen /> Learning Progress Analytics</div>
 
           </div>
 

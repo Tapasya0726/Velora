@@ -1,3 +1,4 @@
+import { FiCalendar, FiTrash2 } from "react-icons/fi";
 import "../styles/ApplicationCard.css";
 
 export default function ApplicationCard({ company, role, appliedDate, onClick,  onDelete }) {
@@ -11,13 +12,15 @@ export default function ApplicationCard({ company, role, appliedDate, onClick,  
         <h6>{company}</h6>
 
         <button
+            type="button"
             className="delete-btn"
             onClick={(e) => {
                 e.stopPropagation();
                 onDelete();
             }}
+            aria-label="Delete application"
         >
-            🗑️
+            <FiTrash2 />
         </button>
 
     </div>
@@ -27,7 +30,7 @@ export default function ApplicationCard({ company, role, appliedDate, onClick,  
 </div>
 
             <div className="application-footer">
-                <span>📅 Applied {appliedDate}</span>
+                <span><FiCalendar /> Applied {appliedDate}</span>
             </div>
         </div>
     );

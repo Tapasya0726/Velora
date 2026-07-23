@@ -1,6 +1,7 @@
 import { formatDate } from "../utils/formatDate";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { FiArrowRight } from "react-icons/fi";
 import api from "../api/axios";
 import "../styles/DashboardDueToday.css";
 import TaskItem from "./TaskItem";
@@ -84,8 +85,9 @@ const todayTasks = tasks
 
                 <h3>Due today</h3>
 
-                <Link to="/tasks" className="all-tasks-link">
-                     All tasks →
+                <Link to="/tasks" className="dashboard-link all-tasks-link">
+                     <span>All tasks</span>
+                     <FiArrowRight />
                 </Link>
 
             </div>
@@ -93,7 +95,7 @@ const todayTasks = tasks
             {
                  todayTasks.length === 0 ? (
         <p className="no-task-message">
-            🎉 No tasks due today!
+            No tasks due today!
         </p>
     ) : (
     todayTasks.map((task) => (

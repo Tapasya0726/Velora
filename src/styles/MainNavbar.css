@@ -25,8 +25,6 @@
 
 .centersection{
     flex:1;
-    display:flex;
-    justify-content:center;
 }
 
 .rightsection{
@@ -44,23 +42,6 @@
     font-weight:700;
     color:#111827;
     margin:0;
-}
-
-.centersection input{
-    width:100%;
-    max-width:420px;
-    padding:11px 14px;
-    border:1px solid #e5e7eb;
-    border-radius:999px;
-    font-size:14px;
-    outline:none;
-    box-sizing:border-box;
-    background:#f8fafc;
-}
-
-.centersection input:focus{
-    border-color:#4f46e5;
-    box-shadow:0 0 0 4px rgba(79, 70, 229, 0.12);
 }
 
 .mobile-nav-toggle{

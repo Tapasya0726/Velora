@@ -1,5 +1,6 @@
 import "../styles/RoadmapResource.css";
 import { FaBookOpen, FaYoutube } from "react-icons/fa";
+import { FiExternalLink } from "react-icons/fi";
 
 export default function RoadmapResource({
   title,
@@ -39,8 +40,9 @@ export default function RoadmapResource({
           target="_blank"
           rel="noreferrer"
         >
-          <button className="start-btn">
-            Start Learning
+          <button className="start-btn" type="button">
+            <FiExternalLink />
+            <span>Start Learning</span>
           </button>
         </a>
 

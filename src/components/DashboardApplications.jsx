@@ -1,3 +1,5 @@
+import { FiArrowRight } from "react-icons/fi";
+import { Link } from "react-router-dom";
 import "../styles/DashboardApplications.css"
 
 export default function DashboardApplications({
@@ -7,7 +9,10 @@ export default function DashboardApplications({
         <section className="applications">
             <div className="apps-header">
                 <h3>Applications</h3>
-                <a href="#">Manage →</a>
+                <Link to="/applications" className="dashboard-link">
+                    <span>Manage</span>
+                    <FiArrowRight />
+                </Link>
             </div>
         <div className="apps-grid">
             <div className="apps-card applied">

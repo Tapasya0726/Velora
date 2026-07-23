@@ -4,6 +4,7 @@ import EmptyState from "../components/EmptyState";
 import AppLayout from "../layouts/AppLayout";
 import "../styles/ApplicationsPage.css";
 import { useEffect, useState } from "react";
+import { FiPlus } from "react-icons/fi";
 import api from "../api/axios";
 
 export default function ApplicationsPage() {
@@ -105,6 +106,7 @@ useEffect(() => {
                     </div>
 
                     <button
+    type="button"
     className="add"
     onClick={() => {
 
@@ -114,7 +116,8 @@ useEffect(() => {
 
     }}
 >
-    + Add
+    <FiPlus />
+    <span>Add</span>
 </button>
                 </div>
 

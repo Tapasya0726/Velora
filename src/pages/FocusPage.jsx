@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { FiPause, FiPlay, FiRotateCcw } from "react-icons/fi";
 import api from "../api/axios";
 import "../styles/FocusPage.css";
 import AppLayout from "../layouts/AppLayout";
@@ -187,7 +188,7 @@ useEffect(() => {
                 <div className="timer-card">
 
                     <div className="streak">
-                        <p>🔥 {stats.streak} {stats.streak === 1 ? "Day" : "Days"} Streak</p>
+                        <p>{stats.streak} {stats.streak === 1 ? "Day" : "Days"} Streak</p>
                     </div>
 
                     <h1>
@@ -202,13 +203,15 @@ useEffect(() => {
                     <div className="timer-buttons">
 
                         <button
+                            type="button"
                             className="resume-pause"
                             onClick={() => setIsRunning(!isRunning)}
                         >
-                            {isRunning ? "⏸ Pause" : "▶ Resume"}
+                            {isRunning ? <><FiPause /><span>Pause</span></> : <><FiPlay /><span>Resume</span></>}
                         </button>
 
                         <button
+                            type="button"
                             className="restart"
                             onClick={() => {
 
@@ -232,7 +235,8 @@ useEffect(() => {
 
                             }}
                         >
-                            ⟳ Restart
+                            <FiRotateCcw />
+                            <span>Restart</span>
                         </button>
 
                     </div>
@@ -300,7 +304,7 @@ useEffect(() => {
 
                         {goals.length === 0 ? (
 
-                            <p>No pending goals 🎉</p>
+                            <p>No pending goals</p>
 
                         ) : (
 

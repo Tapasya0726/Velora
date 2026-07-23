@@ -7,29 +7,40 @@
     flex:1;
 }
 
-.skills-header{
+.topskills .topskills-header{
+    width:100%;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:20px;
+    gap:12px;
+    margin-bottom:15px;
 }
 
-.skills-header h3{
+.topskills .topskills-header h3{
     margin:0;
+    flex:1;
     font-size:18px;
     font-weight:600;
     color:#111827;
+    text-align:left;
 }
 
-.skills-header a{
+.topskills .topskills-header .dashboard-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-left:auto;
     text-decoration:none;
     font-size:14px;
     color:#4f46e5;
-    font-weight:500;
+    font-weight:600;
+    cursor:pointer;
+    transition:all 0.2s ease;
 }
 
-.skills-header a:hover{
-    text-decoration:underline;
+.skills-header .dashboard-link:hover{
+    color:#4338ca;
+    transform:translateX(1px);
 }
 
 .skills{
@@ -93,6 +104,27 @@
     border-radius:999px;
     background:#4f46e5;
     transition:width 0.3s ease;
+}
+
+.no-skill-message{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:120px;
+    font-size:16px;
+    font-weight:500;
+    color:#64748B;
+    background:#F8FAFC;
+    border:2px dashed #D6D9E4;
+    border-radius:16px;
+    margin-top:16px;
+    transition:.3s ease;
+}
+
+.no-skill-message:hover{
+    border-color:#6C63FF;
+    color:#6C63FF;
+    background:#F5F3FF;
 }
 
 @media screen and (max-width:768px){

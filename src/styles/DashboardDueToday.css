@@ -21,16 +21,21 @@
     color:#111827;
 }
 
-.due-header all-tasks-link{
+.dashboard-link{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
     text-decoration:none;
     font-size:14px;
     color:#4f46e5;
-    font-weight:500;
+    font-weight:600;
     cursor:pointer;
+    transition:all 0.2s ease;
 }
 
-.due-header all-tasks-link:hover{
-    text-decoration-line: underline;
+.dashboard-link:hover{
+    color:#4338ca;
+    transform:translateX(1px);
 }
 
 .task-item{

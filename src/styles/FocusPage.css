@@ -281,8 +281,100 @@
 
 }
 
-.active-mode p{
+ .active-mode p{
 
     color:#4F46E5;
+
+}
+
+@media (max-width:768px){
+
+    .focus-header{
+        margin-bottom:20px;
+    }
+
+    .focus-header h2{
+        font-size:28px;
+    }
+
+    .focus-header p{
+        font-size:14px;
+    }
+
+    .timer-card{
+        padding:24px 18px;
+    }
+
+    .timer-card h1{
+        font-size:48px;
+    }
+
+    .timer-buttons{
+        width:100%;
+        flex-direction:column;
+        gap:10px;
+    }
+
+    .resume-pause,
+    .restart{
+        width:100%;
+        justify-content:center;
+        display:flex;
+        align-items:center;
+        gap:8px;
+    }
+
+    .modes{
+        gap:10px;
+        flex-wrap:wrap;
+        margin-bottom:20px;
+    }
+
+    .mode{
+        flex:1 1 30%;
+        min-width:90px;
+        padding:16px 12px;
+    }
+
+    .bottom-section{
+        grid-template-columns:1fr;
+        gap:16px;
+    }
+
+    .todays-goals,
+    .focus-stats{
+        padding:18px;
+    }
+
+    .goal-item{
+        align-items:flex-start;
+        gap:10px;
+    }
+
+    .goal-item span{
+        line-height:1.5;
+        overflow-wrap:anywhere;
+        word-break:break-word;
+    }
+
+    .goal-item input{
+        margin-top:3px;
+    }
+
+    .focus-stats-grid{
+        gap:12px;
+    }
+
+    .focus-stat-card{
+        padding:14px 16px;
+    }
+
+    .focus-stat-card h5{
+        font-size:24px;
+    }
+
+    .focus-stat-card p{
+        font-size:13px;
+    }
 
 }

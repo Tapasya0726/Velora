@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { FiPlus } from "react-icons/fi";
 import api from "../api/axios";
 import NoteCard from "../components/NoteCard";
 import NewNoteModal from "../components/NewNoteModal";
@@ -138,6 +139,7 @@ export default function NotesPage() {
                     </div>
 
                     <button
+                        type="button"
                         className="newnote"
                         onClick={() => {
 
@@ -147,7 +149,8 @@ export default function NotesPage() {
 
                         }}
                     >
-                        + New
+                        <FiPlus />
+                        <span>New</span>
                     </button>
 
                 </div>

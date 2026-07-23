@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { FiPlus, FiPlay } from "react-icons/fi";
 import "../styles/DashboardHero.css";
 
 export default function DashboardHero({ onAddTask }){
@@ -19,18 +20,22 @@ export default function DashboardHero({ onAddTask }){
     return(
         <section className="dashboard-hero">
             <div className="dashboard-hero-left">
-        <h2>Hello {user ? user.name.split(" ")[0] : "User"} 👋</h2>
+        <h2>Hello {user ? user.name.split(" ")[0] : "User"}</h2>
         <p>Start your daily progress</p>
         </div>
         <div className="dashboard-hero-button">
         <button 
+        type="button"
         onClick={onAddTask}>
-        + Add Task
+        <FiPlus />
+        <span>Add Task</span>
         </button>
         <button
+    type="button"
     onClick={() => navigate("/focus")}
 >
-    ▷ Start Focus
+    <FiPlay />
+    <span>Start Focus</span>
 </button>
         </div>
         </section>

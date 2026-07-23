@@ -1,5 +1,6 @@
 import { formatDate } from "../utils/formatDate";
 import { useEffect, useState } from "react";
+import { FiPlus } from "react-icons/fi";
 import api from "../api/axios";
 import TaskCard from "../components/TaskCard";
 import NewTaskModal from "../components/NewTaskModal";
@@ -126,10 +127,12 @@ const handleToggleStatus = async (task) => {
                 </div>
 
                 <button
+                    type="button"
                     className="newtask"
                     onClick={() => setShowModal(true)}
                 >
-                    + New Task
+                    <FiPlus />
+                    <span>New Task</span>
                 </button>
 
             </div>

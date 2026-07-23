@@ -73,63 +73,80 @@ export default function SignUpPage() {
 
             </nav>
 
-            <section className="signup-form">
+            <div className="signup-page">
+                <section className="signup-form">
 
-                <div className="form-header">
+                    <div className="form-header">
 
-                    <h2>Create your account</h2>
+                        <h2>Create your account</h2>
 
-                    <p>Create your Velora workspace and get started.</p>
+                        <p>Create your Velora workspace and get started.</p>
 
-                </div>
+                    </div>
 
-                <form
-                    className="form-inputs"
-                    onSubmit={handleSignup}
-                >
+                    <form
+                        className="form-inputs"
+                        onSubmit={handleSignup}
+                    >
 
-                    <label>Full Name</label>
+                    <label className="field-label">
+                        <span>Full Name</span>
+                        <span className="required-mark">*</span>
+                    </label>
 
                     <input
                         type="text"
                         placeholder="Enter your name"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
+                        required
                     />
 
-                    <label>Email</label>
+                    <label className="field-label">
+                        <span>Email</span>
+                        <span className="required-mark">*</span>
+                    </label>
 
                     <input
                         type="email"
                         placeholder="Enter your email"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
+                        required
                     />
 
                     <div className="input-row">
 
                         <div className="input-group">
 
-                            <label>University</label>
+                            <label className="field-label">
+                                <span>University</span>
+                                <span className="required-mark">*</span>
+                            </label>
 
                             <input
                                 type="text"
                                 placeholder="Enter your university"
                                 value={university}
                                 onChange={(e) => setUniversity(e.target.value)}
+                                required
                             />
 
                         </div>
 
                         <div className="input-group">
 
-                            <label>Major</label>
+                            <label className="field-label">
+                                <span>Major</span>
+                                <span className="required-mark">*</span>
+                            </label>
 
                             <input
                                 type="text"
                                 placeholder="Enter your major"
                                 value={major}
                                 onChange={(e) => setMajor(e.target.value)}
+                                required
                             />
 
                         </div>
@@ -140,7 +157,10 @@ export default function SignUpPage() {
 
                         <div className="input-group">
 
-                            <label>Current Year</label>
+                            <label className="field-label">
+                                <span>Current Year</span>
+                                <span className="required-mark">*</span>
+                            </label>
 
                             <input
                                 type="number"
@@ -149,13 +169,17 @@ export default function SignUpPage() {
                                 max="4"
                                 value={year}
                                 onChange={(e) => setYear(e.target.value)}
+                                required
                             />
 
                         </div>
 
                         <div className="input-group">
 
-                            <label>Graduation Year</label>
+                            <label className="field-label">
+                                <span>Graduation Year</span>
+                                <span className="required-mark">*</span>
+                            </label>
 
                             <input
                                 type="number"
@@ -164,19 +188,24 @@ export default function SignUpPage() {
                                 max="2100"
                                 value={graduationYear}
                                 onChange={(e) => setGraduationYear(e.target.value)}
+                                required
                             />
 
                         </div>
 
                     </div>
 
-                    <label>Password</label>
+                    <label className="field-label">
+                        <span>Password</span>
+                        <span className="required-mark">*</span>
+                    </label>
 
                     <input
                         type="password"
                         placeholder="Minimum 8 characters"
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
+                        required
                     />
 
                     <button type="submit">
@@ -185,17 +214,18 @@ export default function SignUpPage() {
 
                 </form>
 
-                <div className="form-footer">
+                    <div className="form-footer">
 
-                    <p>Already a member?</p>
+                        <p>Already a member?</p>
 
-                    <Link to="/login">
-                        Log in →
-                    </Link>
+                        <Link to="/login">
+                            Log in →
+                        </Link>
 
-                </div>
+                    </div>
 
-            </section>
+                </section>
+            </div>
 
         </>
 

@@ -40,9 +40,7 @@ export default function MainNavbar({ onMenuToggle, isMenuOpen }) {
                 <h2>Velora</h2>
             </div>
 
-            <div className="centersection">
-                <input type="text" placeholder="Search notes, tasks..." />
-            </div>
+            <div className="centersection" aria-hidden="true" />
 
             <div className="rightsection">
                 <Link to="/settings" className="navbar-profile-btn">

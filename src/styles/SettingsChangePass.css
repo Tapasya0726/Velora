@@ -33,11 +33,19 @@
     flex-direction:column;
 }
 
-.form-group label{
+.field-label{
+    display:flex;
+    align-items:center;
+    gap:6px;
     font-size:14px;
     font-weight:600;
     color:#374151;
     margin-bottom:8px;
+}
+
+.required-mark{
+    color:#ef4444;
+    font-weight:700;
 }
 
 .form-group input{
@@ -48,6 +56,7 @@
     color:#111827;
     outline:none;
     transition:0.2s ease;
+    background:#ffffff;
 }
 
 .form-group input:focus{

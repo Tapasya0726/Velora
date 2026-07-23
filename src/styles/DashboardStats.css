@@ -3,13 +3,18 @@
     justify-content:space-between;
     margin-top:8px;
     gap:18px;
+    background:white;
+    padding:18px;
+    border-radius:15px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.05);
+    border:1px solid #e5e7eb;
 }
 
 .stat-card{
-    background:white;
+    background:#f8fafc;
     padding:20px;
-    border-radius:20px;
-    box-shadow:0 8px 24px rgba(15, 23, 42, 0.04);
+    border-radius:15px;
+    box-shadow:none;
     flex:1;
     border:1px solid #e5e7eb;
 
@@ -46,27 +51,29 @@
 
 @media screen and (max-width:768px){
     .stats{
-        flex-direction:column;
-        gap:15px;
+        display:grid;
+        grid-template-columns:repeat(2, minmax(0, 1fr));
+        gap:12px;
     }
 
     .stat-card{
-        padding:18px;
+        padding:16px;
     }
 
     .stat-card svg{
-        font-size:22px;
+        font-size:18px;
+        margin-bottom:8px;
     }
 
     .stat-card h2{
-        font-size:24px;
+        font-size:20px;
     }
 
     .stat-title{
-        font-size:13px;
+        font-size:12px;
     }
 
     .stat-subtitle{
-        font-size:12px;
+        font-size:11px;
     }
 }

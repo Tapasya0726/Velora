@@ -13,7 +13,10 @@ import { FaHome } from "react-icons/fa";
 import "../styles/MainSidebar.css";
 
 export default function MainSidebar({ isOpen = false, onLinkClick = () => {} }) {
-    const getNavClass = ({ isActive }) => (isActive ? "sidebar-link active" : "sidebar-link");
+    const getNavClass = ({ isActive }) => [
+        "sidebar-link",
+        isActive ? "active" : ""
+    ].filter(Boolean).join(" ");
 
     const handleLinkClick = () => onLinkClick();
 
@@ -25,22 +28,22 @@ export default function MainSidebar({ isOpen = false, onLinkClick = () => {} }) 
 
             <div className="workspace">
                 <h5>WORKSPACE</h5>
-                <NavLink to="/dashboard" className={getNavClass} onClick={handleLinkClick}>
+                <NavLink to="/dashboard" end className={getNavClass} onClick={handleLinkClick}>
                     <FaHome />
                     <span>Activity</span>
                 </NavLink>
 
-                <NavLink to="/tasks" className={getNavClass} onClick={handleLinkClick}>
+                <NavLink to="/tasks" end className={getNavClass} onClick={handleLinkClick}>
                     <FaTasks />
                     <span>Tasks</span>
                 </NavLink>
 
-                <NavLink to="/notes" className={getNavClass} onClick={handleLinkClick}>
+                <NavLink to="/notes" end className={getNavClass} onClick={handleLinkClick}>
                     <HiOutlineDocumentText />
                     <span>Notes</span>
                 </NavLink>
 
-                <NavLink to="/focus" className={getNavClass} onClick={handleLinkClick}>
+                <NavLink to="/focus" end className={getNavClass} onClick={handleLinkClick}>
                     <FaBrain />
                     <span>Focus</span>
                 </NavLink>
@@ -48,22 +51,22 @@ export default function MainSidebar({ isOpen = false, onLinkClick = () => {} }) 
 
             <div className="career">
                 <h5>CAREER</h5>
-                <NavLink to="/applications" className={getNavClass} onClick={handleLinkClick}>
+                <NavLink to="/applications" end className={getNavClass} onClick={handleLinkClick}>
                     <MdWorkOutline />
                     <span>Applications</span>
                 </NavLink>
 
-                <NavLink to="/skills" className={getNavClass} onClick={handleLinkClick}>
+                <NavLink to="/skills" end className={getNavClass} onClick={handleLinkClick}>
                     <GiProgression />
                     <span>Skills</span>
                 </NavLink>
 
-                <NavLink to="/resume" className={getNavClass} onClick={handleLinkClick}>
+                <NavLink to="/resume" end className={getNavClass} onClick={handleLinkClick}>
                     <FaFileAlt />
                     <span>Resume</span>
                 </NavLink>
 
-                <NavLink to="/roadmap" className={getNavClass} onClick={handleLinkClick}>
+                <NavLink to="/roadmap" end className={getNavClass} onClick={handleLinkClick}>
                     <FaMapSigns />
                     <span>Roadmap</span>
                 </NavLink>
@@ -71,12 +74,12 @@ export default function MainSidebar({ isOpen = false, onLinkClick = () => {} }) 
 
             <div className="insights">
                 <h5>INSIGHTS</h5>
-                <NavLink to="/analytics" className={getNavClass} onClick={handleLinkClick}>
+                <NavLink to="/analytics" end className={getNavClass} onClick={handleLinkClick}>
                     <FaChartBar />
                     <span>Analytics</span>
                 </NavLink>
 
-                <NavLink to="/settings" className={getNavClass} onClick={handleLinkClick}>
+                <NavLink to="/settings" end className={getNavClass} onClick={handleLinkClick}>
                     <FaCog />
                     <span>Settings</span>
                 </NavLink>

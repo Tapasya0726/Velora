@@ -1,3 +1,4 @@
+import { FiEdit2, FiTrash2 } from "react-icons/fi";
 import "../styles/TaskCard.css"
 
 export default function TaskCard({
@@ -12,7 +13,7 @@ export default function TaskCard({
 }) {
     return(
         
-<div className="task-card">
+<div className={`task-card ${completed ? "is-completed" : ""}`}>
 
         <div className="checkbox">
             <input type="checkbox"
@@ -22,7 +23,7 @@ export default function TaskCard({
         </div>
         <div className="task-content">
         <div className="title">
-            <p className={completed ? "completed" : ""}>
+            <p className={completed ? "completed-text" : ""}>
                 {title}
             </p>
         </div>
@@ -33,17 +34,21 @@ export default function TaskCard({
              <div className="task-actions">
 
     <button
-        className="edit-btn"
+        type="button"
+        className="icon-action edit-action"
         onClick={() => onEdit(taskId)}
+        aria-label="Edit task"
     >
-        ✏️
+        <FiEdit2 />
     </button>
 
     <button
-        className="delete-btn"
+        type="button"
+        className="icon-action delete-action"
         onClick={() => onDelete(taskId)}
+        aria-label="Delete task"
     >
-        🗑️
+        <FiTrash2 />
     </button>
 
 </div>
@@ -57,7 +62,7 @@ export default function TaskCard({
         
 
         <div className="date">
-            <span className={completed ? "completed" : ""}>
+            <span>
                 {duedate}
                 </span>
         </div>

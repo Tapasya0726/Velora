@@ -39,6 +39,9 @@
     font-weight:600;
     cursor:pointer;
     transition:0.2s;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
 }
 
 .edit-btn{
@@ -53,9 +56,9 @@
 .score-card{
     background:linear-gradient(135deg, #ffffff 0%, #f8faff 100%);
     border:1px solid #e5e7eb;
-    border-radius:24px;
-    padding:28px;
-    margin:30px 0;
+    border-radius:20px;
+    padding:24px;
+    margin:24px 0;
     display:flex;
     align-items:center;
     gap:25px;
@@ -105,7 +108,7 @@
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
-    margin-bottom:30px;
+    margin-bottom:24px;
 }
 
 /* ---------- Education ---------- */
@@ -119,108 +122,87 @@
     background:#4f46e5;
     color:#fff;
     border:none;
-    padding:10px 18px;
+    padding:10px 16px;
     border-radius:999px;
     font-size:14px;
     font-weight:600;
     cursor:pointer;
     transition:.2s;
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
 }
 
-.add-btn:hover{
-    background:#4338ca;
+@media (max-width: 768px){
+    .add-btn{
+        padding:9px 13px;
+        font-size:13px;
+    }
 }
 
-.education-item{
+@media (max-width: 480px){
+    .add-btn{
+        padding:8px 12px;
+        font-size:12px;
+    }
+}
+.education-item,
+.project-item{
     position:relative;
-    background:#fff;
-    border:1px solid #e5e7eb;
-    border-radius:14px;
-    padding:20px;
-    margin-bottom:16px;
 }
 
-.education-item h4{
-    font-size:20px;
-    color:#111827;
-    margin-bottom:8px;
-}
-
-.education-item p{
-    color:#6b7280;
-    margin-bottom:4px;
-    font-size:14px;
-}
-
-.education-actions{
+.education-actions,
+.project-actions{
     position:absolute;
     top:18px;
     right:18px;
     display:flex;
-    gap:10px;
+    gap:8px;
 }
 
 .education-edit-btn,
-.education-delete-btn{
+.education-delete-btn,
+.project-edit-btn,
+.project-delete-btn{
+    width:36px;
+    height:36px;
     border:none;
-    border-radius:8px;
-    padding:8px 14px;
-    font-size:13px;
-    font-weight:600;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
     cursor:pointer;
     transition:.2s;
+    font-size:15px;
+    box-shadow:0 2px 6px rgba(15,23,42,.05);
 }
 
-.education-edit-btn{
+.education-edit-btn,
+.project-edit-btn{
     background:#eef2ff;
     color:#4f46e5;
 }
 
-.education-edit-btn:hover{
+.education-edit-btn:hover,
+.project-edit-btn:hover{
     background:#e0e7ff;
+    transform:translateY(-1px);
 }
 
-.education-delete-btn{
-    background:#ef4444;
-    color:#fff;
+.education-delete-btn,
+.project-delete-btn{
+    background:#fef2f2;
+    color:#dc2626;
 }
 
-.education-delete-btn:hover{
-    background:#dc2626;
+.education-delete-btn:hover,
+.project-delete-btn:hover{
+    background:#fee2e2;
+    transform:translateY(-1px);
 }
 
-.project-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-bottom: 10px;
-}
-
-.project-edit-btn,
-.project-delete-btn {
-    padding: 6px 12px;
-    border: none;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 14px;
-}
-
-.project-edit-btn {
-    background-color: #3b82f6;
-    color: white;
-}
-
-.project-edit-btn:hover {
-    background-color: #2563eb;
-}
-
-.project-delete-btn {
-    background-color: #ef4444;
-    color: white;
-}
-
-.project-delete-btn:hover {
-    background-color: #dc2626;
+.project-item{
+    position:relative;
 }
 
 .resume-link{
@@ -270,15 +252,17 @@
     }
 
     .btns{
-        width:100%;
+        width:auto;
         display:flex;
         gap:12px;
+        align-self:flex-start;
     }
 
     .edit-btn{
-        flex:1;
+        width:auto;
         justify-content:center;
-        padding:12px;
+        padding:10px 14px;
+        font-size:13px;
     }
 
     .score-card{
@@ -318,15 +302,16 @@
     }
 
     .btns{
-        flex-direction:column;
-        width:100%;
+        width:auto;
+        flex-direction:row;
+        align-self:flex-start;
     }
 
     .edit-btn,
     .download-btn{
-        width:100%;
-        font-size:13px;
-        padding:11px;
+        width:auto;
+        font-size:12px;
+        padding:9px 11px;
     }
 
     .score-card{
@@ -353,9 +338,11 @@
         padding:16px;
     }
 
-    .education-actions{
-        position:static;
-        margin-top:12px;
-        justify-content:flex-start;
+    .education-actions,
+    .project-actions{
+        position:absolute;
+        top:16px;
+        right:16px;
+        justify-content:flex-end;
     }
 }

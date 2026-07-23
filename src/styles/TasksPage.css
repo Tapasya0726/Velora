@@ -2,28 +2,28 @@
     display:flex;
     justify-content:space-between;
     align-items:flex-start;
-    margin-bottom:30px;
+    margin-bottom:22px;
 }
 
 .task-header h6{
     color:#4f46e5;
     font-size:10px;
     letter-spacing:1px;
-    margin-bottom:8px;
+    margin-bottom:6px;
     font-weight:700;
 }
 
 .task-header h2{
-    font-size:35px;
-    font-weight:940;
+    font-size:30px;
+    font-weight:900;
     color:#111827;
-    margin-bottom:8px;
-    letter-spacing:1px;
+    margin-bottom:6px;
+    letter-spacing:0.5px;
 }
 
 .task-header p{
     color:#6b7280;
-    font-size:15px;
+    font-size:14px;
 }
 
 .newtask{
@@ -31,12 +31,15 @@
     color:white;
     border:none;
     border-radius:12px;
-    padding:14px 22px;
+    padding:12px 18px;
     font-size:13px;
-    font-weight:500;
+    font-weight:600;
     cursor:pointer;
     transition:0.2s;
-    margin:20px 0px 20px 0px;
+    margin:18px 0px;
+    display:flex;
+    align-items:center;
+    gap:8px;
 }
 
 .newtask:hover{
@@ -45,10 +48,9 @@
 
 .completion-rate{
     background:#ecfdf5;
-    border-radius:18px;
-    padding:30px;
-    margin-bottom:35px;
-
+    border-radius:16px;
+    padding:20px 24px;
+    margin-bottom:24px;
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -56,20 +58,20 @@
 }
 
 .completion-rate h5{
-    font-size:35px;
+    font-size:30px;
     font-weight:700;
     color:#16a34a;
-    margin-bottom:6px;
+    margin-bottom:4px;
 }
 
 .completion-rate p{
     color:#6b7280;
-    font-size:13px;
+    font-size:12px;
 }
 
 .pending,
 .completed{
-    margin-top:30px;
+    margin-top:20px;
 }
 
 .pending h6,
@@ -78,7 +80,7 @@
     letter-spacing:1px;
     text-transform:uppercase;
     color:#94a3b8;
-    margin-bottom:14px;
+    margin-bottom:12px;
 }
 
 @media screen and (max-width:768px){
@@ -86,6 +88,7 @@
         flex-direction:column;
         gap:15px;
         margin-bottom:20px;
+        align-items:flex-start;
     }
 
     .task-header h6{
@@ -101,9 +104,11 @@
     }
 
     .newtask{
-        width:100%;
-        padding:12px;
-        font-size:14px;
+        width:auto;
+        align-self:flex-start;
+        padding:10px 12px;
+        font-size:13px;
+        margin:0;
     }
 
     .completion-rate{
@@ -143,5 +148,7 @@
 
     .newtask{
         margin:10px 0;
+        padding:9px 11px;
+        font-size:12px;
     }
 }

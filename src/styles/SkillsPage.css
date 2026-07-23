@@ -114,3 +114,62 @@
     grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
     gap:18px;
 }
+
+@media screen and (max-width:768px){
+    .header-row{
+        flex-direction:column;
+        gap:16px;
+        align-items:flex-start;
+    }
+
+    .skills-header h2{
+        font-size:28px;
+    }
+
+    .skills-header span{
+        font-size:13px;
+    }
+
+    .add-skill{
+        width:auto;
+        padding:10px 14px;
+        font-size:13px;
+    }
+
+    .skills-overview{
+        padding:24px 20px;
+        margin:20px 0 24px;
+    }
+
+    .skills-overview h2{
+        font-size:32px;
+    }
+
+    .skills-overview p{
+        font-size:16px;
+    }
+
+    .skills-grid{
+        grid-template-columns:1fr;
+        gap:14px;
+    }
+}
+
+@media screen and (max-width:480px){
+    .skills-header h2{
+        font-size:24px;
+    }
+
+    .skills-overview h2{
+        font-size:28px;
+    }
+
+    .skills-overview p{
+        font-size:14px;
+    }
+
+    .skills-overview span{
+        font-size:12px;
+        text-align:center;
+    }
+}

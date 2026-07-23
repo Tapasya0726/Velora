@@ -40,7 +40,15 @@ const fetchProfile = async () => {
 
 if (!user) {
 
-    return <p>Loading...</p>;
+    return (
+        <AppLayout>
+            <div className="page-loading">
+                <div className="page-loading__spinner" aria-hidden="true" />
+                <h2>Loading your settings…</h2>
+                <p>Fetching your profile details and account preferences.</p>
+            </div>
+        </AppLayout>
+    );
 
 }
     return (

@@ -25,11 +25,7 @@
     text-decoration:none;
     font-size:14px;
     color:#4f46e5;
-    font-weight:500;
-}
-
-.apps-header a:hover{
-    text-decoration:underline;
+    font-weight:600;
 }
 
 .apps-grid{
@@ -95,12 +91,13 @@
     }
 
     .apps-grid{
-        flex-direction:column;
+        display:grid;
+        grid-template-columns:repeat(2, minmax(0, 1fr));
         gap:12px;
     }
 
     .apps-card{
-        padding:15px;
+        padding:14px;
     }
 
     .number{
@@ -108,7 +105,7 @@
     }
 
     .label{
-        font-size:12px;
+        font-size:11px;
     }
 
 }
