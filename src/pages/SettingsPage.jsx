@@ -18,7 +18,7 @@ const fetchProfile = async () => {
 
             const response = await api.get("/profile");
 
-            console.log(response.data);
+            // console.log(response.data);
 
             setUser(response.data);
 

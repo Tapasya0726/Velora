@@ -16,7 +16,7 @@ export default function DashboardDueToday({refreshTasks}) {
 
                 const response = await api.get("/tasks");
 
-                console.log(response.data);
+                // console.log(response.data);
 
                 setTasks(response.data);
 

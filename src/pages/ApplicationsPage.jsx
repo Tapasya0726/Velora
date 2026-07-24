@@ -29,7 +29,7 @@ const fetchApplications = async () => {
 
         const response = await api.get("/applications");
 
-        console.log(response.data);
+        // console.log(response.data);
 
         setApplications(response.data);
 

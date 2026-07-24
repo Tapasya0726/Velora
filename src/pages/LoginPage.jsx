@@ -30,8 +30,8 @@ function LoginPage() {
                 JSON.stringify(response.data.user)
             );
 
-            console.log("Login Successful");
-            console.log(response.data);
+            // console.log("Login Successful");
+            // console.log(response.data);
 
             navigate("/dashboard");
 
