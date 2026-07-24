@@ -49,7 +49,7 @@ import { Link } from "react-router-dom";
     </p>
 
     <div className="buttons">
-      <Link to="/login"><button className="free">Start for free →</button></Link>
+      <Link to="/signup"><button className="free">Start for free →</button></Link>
      {/* <button className="demo">See a demo →</button> */} 
     </div>
 

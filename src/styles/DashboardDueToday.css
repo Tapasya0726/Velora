@@ -117,7 +117,8 @@
 
 .urgent,
 .high,
-.medium{
+.medium,
+.low{
     padding:4px 8px;
     border-radius:6px;
     font-size:12px;
@@ -137,6 +138,11 @@
 .medium{
     background-color:#dbeafe;
     color:#2563eb;
+}
+
+.low{
+    background-color:#dcfce7;
+    color:#16a34a;
 }
 
 .date{

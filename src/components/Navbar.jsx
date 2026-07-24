@@ -19,7 +19,7 @@ export default function Navbar(){
         
               <div className="rightsection">
               <Link to="/login">Log in</Link>
-              <Link to="/login"><button>Get Started Free</button></Link>
+              <Link to="/signup"><button>Get Started Free</button></Link>
               </div>
         
            </nav>
